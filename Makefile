@@ -6,13 +6,13 @@
 #    By: azabir <azabir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 15:27:12 by azabir            #+#    #+#              #
-#    Updated: 2022/10/04 15:27:32 by azabir           ###   ########.fr        #
+#    Updated: 2022/10/06 14:36:32 by azabir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS =  -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g3
-SRC = src/*.c
+SRC = src/*.c libs/libft/*.c
 NAME = cub3D
 
 OBJS = $(SRC:.c=.o)

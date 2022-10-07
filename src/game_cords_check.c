@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   game_cords_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azabir <azabir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 15:36:31 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/06 14:37:37 by azabir           ###   ########.fr       */
+/*   Created: 2022/10/06 18:34:01 by azabir            #+#    #+#             */
+/*   Updated: 2022/10/07 11:10:47 by azabir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-#define LIBFT_H
+#include "../include/cub.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
+int	is_in_win(float x, float y)
+{
+	if (x < 0 || x > WIN_WIDTH || y < 0 || y > WIN_HIGHT - 1)
+		return (0);
+	return (1);
+}
 
-char	**ft_split(char const *s, char c);
-
-#endif
+int	is_in_map(t_map map,int x, int y)
+{
+	x = x / UNIT;
+	y = y / UNIT;
+	
+	if (x < 0 || x > map.x_len || y < 0 || y > map.y_len)
+		return (0);
+	return (1);
+}
