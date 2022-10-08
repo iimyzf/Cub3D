@@ -46,7 +46,7 @@ void	ang_update(t_ang *ang, float value)
 	}
 }
 
-void	player_update(t_player *player, float *ang, char **map)
+void	player_update(t_player *player, int *ang, char **map)
 {
 	int	x;
 	int	y;
