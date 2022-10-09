@@ -18,7 +18,7 @@ t_img	*img_init(t_data *data)
 	
 	img->x = data->main_map.x_len;
 	img->y = data->main_map.y_len;
-	img->ptr = mlx_new_image(data->mlx, img->x * UNIT , img->x * UNIT );
+	img->ptr = mlx_new_image(data->mlx, img->x * UNIT , img->y * UNIT );
 	img->addr = mlx_get_data_addr(img->ptr, &img->bit_per_pixel, &img->line_length,
 				&img->endian);
 	return (img);
@@ -26,8 +26,8 @@ t_img	*img_init(t_data *data)
 
 int	scean_init(t_data	*data)
 {
-	data->player.x = 100;
-	data->player.y = 100;
+	data->player.x = 200;
+	data->player.y = 300;
 	ang_update(&data->player.ang, INIT_ANG);
 	player_update(&data->player, &data->player.ang.value, data->main_map.map);
 	return (0);

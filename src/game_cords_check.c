@@ -32,6 +32,14 @@ int	is_a_wall(t_map main_map, float x, float y)
 	char	**map;
 
 	map = main_map.map;
+
+	// IMPORTANT !!
+	/////////////////////////////////////////////////////////////////////////////////
+	// here we have x_len of the map is by deafult the len of the longest line     //
+	// (in shorter lines we may get an overflow is same cases), so i have to find  //
+	// the x_len of each line                                                      //
+	/////////////////////////////////////////////////////////////////////////////////
+
 	if (is_in_map(main_map, x, y) && map[(int)(y / UNIT)][(int)(x / UNIT)] == '1')
 	{
 		return (1);

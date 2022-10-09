@@ -51,7 +51,7 @@ void	draw_ray(t_img *img, t_ray ray, int color)
 	i = 0;
 	while (i <= ray.step && i < 5000)
 	{
-		my_pixel_put(img, x, y, color);
+		my_pixel_put(img, x * SCAL, y * SCAL, color);
 		x += ray.dx ;
 		y += ray.dy ;
 		i += 1;

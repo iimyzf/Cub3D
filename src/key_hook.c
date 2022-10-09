@@ -22,8 +22,8 @@ int	key_hook(int keycode, t_data *data)
 	if (keycode == 124)
 		data->player.ang.value += RO_SPEED;
 	player_update(&data->player, &data->player.ang.value, data->main_map.map);
-	if (!data->player.can_move_f || !data->player.can_move_b)
-		add_collision_trans(&data->player, data->main_map.map);
+	// if (!data->player.can_move_f || !data->player.can_move_b)
+	// 	add_collision_trans(&data->player, data->main_map.map);
 	if (keycode == 126 && data->player.can_move_f)
 	{
 		data->player.x += data->player.dx * SPEED;

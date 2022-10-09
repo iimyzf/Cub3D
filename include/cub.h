@@ -27,7 +27,7 @@
 # define SPEED 30
 # define COL_SPEED 2
 # define UNIT 50
-# define SCAL 0.1
+# define SCAL 0.2
 # define MINI_UNIT (UNIT * SCAL)
 # define RAD M_PI / 180
 # define WIN_HIGHT 750
@@ -115,7 +115,7 @@ typedef	struct s_data
 
 
 int		scean_init(t_data	*data);
-void	rays_render(t_img *img, t_player player, t_map map);
+t_ray	*rays_render(t_img *img, t_player player, t_map map);
 t_img	*img_init(t_data *data);
 void	ray_init(t_player *player, t_ray *ray, float ang);
 t_ray	vert_ray_init(t_player *player, float ang, t_map map);
@@ -135,6 +135,7 @@ void	ray_casting(t_ray *ray, t_map map);
 void	draw_wall(t_img *img, int index, float hight, int color);
 int		is_in_win(float x, float y);
 int		is_in_map(t_map map,float x, float y);
+int		ft_strlen(char *str);
 t_ray	hor_ray_init(t_player *player, float ang, t_map map);
 
 #endif
