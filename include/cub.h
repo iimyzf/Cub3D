@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef CUB_H
-#define CUB_H
+# define CUB_H
 
 # include <math.h>
 # include <mlx.h>
@@ -22,17 +22,18 @@
 # include <fcntl.h>
 # include "../libs/libft.h"
 
-#define INIT_ANG 45
-#define RO_SPEED 4
-#define SPEED 10
-#define	COL_SPEED 0.5
-#define UNIT 50
-#define	SCAL 1
-#define MINI_UNIT (UNIT * SCAL)
-#define	RAD M_PI / 180
-#define WIN_HIGHT 550
-#define WIN_WIDTH 1600
-#define	FOV 60
+# define INIT_ANG 0
+# define RO_SPEED 4
+# define SPEED 30
+# define COL_SPEED 2
+# define UNIT 50
+# define SCAL 0.1
+# define MINI_UNIT (UNIT * SCAL)
+# define RAD M_PI / 180
+# define WIN_HIGHT 750
+# define WIN_WIDTH 1100
+# define FOV 60.0000
+# define RAY_OFS (FOV / WIN_WIDTH)
 
 typedef struct s_cords
 {
@@ -42,7 +43,7 @@ typedef struct s_cords
 
 typedef	struct s_ang
 {
-	int		value;
+	float	value;
 	int		to_right;
 	int		to_up;
 	int		x_ofs;
@@ -58,10 +59,11 @@ typedef struct s_ray
 	float	ang_tg;
 	float	dx;
 	float	dy;
+	float	ang_addj;
 	float	step;
 	float	x_step;
 	float	y_step;
-	float	Wall_hight;
+	float	wall_hight;
 }	t_ray;
 
 typedef	struct s_img
@@ -113,6 +115,7 @@ typedef	struct s_data
 
 
 int		scean_init(t_data	*data);
+void	rays_render(t_img *img, t_player player, t_map map);
 t_img	*img_init(t_data *data);
 void	ray_init(t_player *player, t_ray *ray, float ang);
 t_ray	vert_ray_init(t_player *player, float ang, t_map map);
@@ -123,12 +126,13 @@ int		rendering(t_data *data);
 void	add_collision_trans(t_player *player, char **map);
 void	ang_update(t_ang *ang, float value);
 void	my_pixel_put(t_img *img, int x, int y, int color);
-void	player_update(t_player *player, int *ang, char **map);
+void	player_update(t_player *player, float *ang, char **map);
 void	map_render(t_img *img, char	**map);
 void	bloc_draw(t_img *img, int x, int y, int color);
 int		is_a_wall(t_map main_map,float x, float y);
 void	draw_ray(t_img *img, t_ray ray, int color);
 void	ray_casting(t_ray *ray, t_map map);
+void	draw_wall(t_img *img, int index, float hight, int color);
 int		is_in_win(float x, float y);
 int		is_in_map(t_map map,float x, float y);
 t_ray	hor_ray_init(t_player *player, float ang, t_map map);

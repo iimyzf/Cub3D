@@ -28,10 +28,10 @@ void	bloc_draw(t_img *img, int x, int y, int color)
 	int	j;
 	
 	i = 0;
-	while (i < (MINI_UNIT - 1))
+	while (i < (MINI_UNIT))
 	{
 		j = 0;
-		while (j < (MINI_UNIT - 1))
+		while (j < (MINI_UNIT))
 		{
 			my_pixel_put(img, x + j, y + i, color);
 			j++;
@@ -57,6 +57,34 @@ void	draw_ray(t_img *img, t_ray ray, int color)
 		i += 1;
 	}
 }
+
+void	draw_wall(t_img *img, int index, float hight, int color)
+{
+	float	start;
+	float	wall_start;
+	float	end;
+
+	start = 0;
+	wall_start = (WIN_HIGHT / 2) - (hight / 2);
+	end = (WIN_HIGHT / 2) + (hight / 2);
+	while (start < wall_start)
+	{
+		my_pixel_put(img, index, start, 0x99FFFF);
+		start++;
+	}
+	while (start <= end)
+	{
+		my_pixel_put(img, index, start, color);
+		start++;
+	}
+	while (start <= WIN_HIGHT)
+	{
+		my_pixel_put(img, index, start, 0xC0C0C0);
+		start++;
+	}
+}
+
+//void	draw_rays()
 
 void	dda_algo(t_img *img, float x0, float y0, float x1, float y1, int color)
 {
