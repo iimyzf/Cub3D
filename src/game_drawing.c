@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../includes/cub.h"
 
 void	my_pixel_put(t_img *img, int x, int y, int color)
 {

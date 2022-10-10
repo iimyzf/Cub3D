@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../includes/cub.h"
 
 int	is_in_win(float x, float y)
 {

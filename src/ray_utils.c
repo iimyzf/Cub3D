@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../includes/cub.h"
 
 void	ray_init(t_player *player, t_ray *ray, float ang)
 {

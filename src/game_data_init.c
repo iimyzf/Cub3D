@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../includes/cub.h"
 
 t_img	*img_init(t_data *data)
 {

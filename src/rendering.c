@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../includes/cub.h"
 
 
 void	map_render(t_img *img, char	**map)
