@@ -16,7 +16,7 @@ void	get_image(char *str, t_data *data)
 {
 	data->mlx = mlx_init();
 	data->img.ptr = mlx_xpm_file_to_image(data->mlx, str, 
-		&data->win->height, &data->win->width);
+		&data->win.hight, &data->win.width);
 	if (data->img.ptr == NULL)
 		print_and_exit("Path invalid!");
 }
@@ -30,7 +30,7 @@ unsigned int	get_color(char *str, t_color *color)
 {
 	int				i;
 	int				j;
-	unsigned int	color;
+	unsigned int	col;
 	char			**rgb;
 
 	i = 0;
@@ -52,8 +52,8 @@ unsigned int	get_color(char *str, t_color *color)
 	if (color->r < 0 || color->r > 255 || color->g < 0
 		|| color->g > 255 || color->b < 0 || color->b > 255)
 		print_and_exit("Invalid color!");
-	color = rgb_to_int(color->r, color->g, color->b);
-	return (color);
+	col = rgb_to_int(color->r, color->g, color->b);
+	return (col);
 }
 
 char	*get_str(char *str)
@@ -82,24 +82,24 @@ char	*get_str(char *str)
 
 void	which_str(char *str, t_color *color)
 {
-	int		i;
-	char	*string;
+	// int		i;
+	// char	*string;
 
-	string = get_str(str);
-	if (ft_strlen(str) > ft_strlen(string) + 1)
-		str += ft_strlen(string);
-	while (*str && *str == ' ')
-		*str++;
-	if (!ft_strcmp(string, "NO") || !ft_strcmp(string, "SO")
-		|| !ft_strcmp(string, "WE") || !ft_strcmp(string, "EA"))
-		get_image(str, color);
-	else if (!ft_strcmp(string, "F") || !ft_strcmp(string, "C"))
-	{
-		if (!ft_strcmp(string, "C"))
-			color->c = get_color(str, color);
-		else
-			color->f = get_color(str, color);
-	}
+	// string = get_str(str);
+	// if (ft_strlen(str) > ft_strlen(string) + 1)
+	// 	str += ft_strlen(string);
+	// while (*str && *str == ' ')
+	// 	str++;
+	// if (!ft_strcmp(string, "NO") || !ft_strcmp(string, "SO")
+	// 	|| !ft_strcmp(string, "WE") || !ft_strcmp(string, "EA"))
+	// 	//get_image(str, &color);
+	// else if (!ft_strcmp(string, "F") || !ft_strcmp(string, "C"))
+	// {
+	// 	if (!ft_strcmp(string, "C"))
+	// 		color->c = get_color(str, color);
+	// 	else
+	// 		color->f = get_color(str, color);
+	// }
 }
 
 void	get_element(char *map, t_color *color)

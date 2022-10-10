@@ -12,40 +12,40 @@
 
 #include "../includes/cub.h"
 
-int	ft_strlen(char *str)
-{
-	int	i;
+// int	ft_strlen(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str && str[i] != '\0')
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (str && str[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
 
-char	*ft_strjoin(char *str, char *buf)
-{
-	char	*ptr;
-	size_t	j;
+// char	*ft_strjoin(char *str, char *buf)
+// {
+// 	char	*ptr;
+// 	size_t	j;
 
-	if (!str || !buf)
-		return (NULL);
-	j = ft_strlen(str);
-	j +=1;
-	ptr = malloc (sizeof(char) * (j + 1));
-	if (!ptr)
-		return (NULL);
-	j = 0;
-	while (str[j])
-	{
-		ptr[j] = str[j];
-		j++;
-	}
-	while (*buf)
-		ptr[j++] = *buf++;
-	ptr [j] = 0;
-	free (str);
-	return (ptr);
-}
+// 	if (!str || !buf)
+// 		return (NULL);
+// 	j = ft_strlen(str);
+// 	j +=1;
+// 	ptr = malloc (sizeof(char) * (j + 1));
+// 	if (!ptr)
+// 		return (NULL);
+// 	j = 0;
+// 	while (str[j])
+// 	{
+// 		ptr[j] = str[j];
+// 		j++;
+// 	}
+// 	while (*buf)
+// 		ptr[j++] = *buf++;
+// 	ptr [j] = 0;
+// 	free (str);
+// 	return (ptr);
+// }
 
 void	map_check(t_data *data)
 {

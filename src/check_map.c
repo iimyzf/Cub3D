@@ -24,12 +24,12 @@ void	do_this(t_map *map, int i, int j, int *count, int len)
 		print_and_exit("New line found in the map!");
 	if (!ft_isalnum(map->map[i][j]))
 		print_and_exit("Found another character in the map!");
-	check_for_player(map->map[i][j], &count);
-	check_top_bottom_tab(map->map, i, j, len);
+	check_for_player(map->map[i][j], count);
+	check_top_bottom_tab(map, i, j, len);
 	if (map->map[i][j] == '0')
 	{
-		check_for_end(map->map, i, j);
-		check_for_space(map->map, i, j);
+		check_for_end(map, i, j);
+		check_for_space(map, i, j);
 	}
 }
 
@@ -50,7 +50,7 @@ void	map_checking(t_map *map)
 		j = 0;
 		while (map->map[i][j])
 		{
-			do_this(map->map, i, j, count, len);
+			do_this(map, i, j, &count, len);
 			j++;
 		}
 		i++;
@@ -78,6 +78,6 @@ void	read_map(int fd, t_data *data)
     }
 	check_for_newline(line);
 	data->main_map.map = ft_split(line, '\n');
-	map_checking(data->main_map.map);
+	map_checking(&data->main_map);
 }
 
