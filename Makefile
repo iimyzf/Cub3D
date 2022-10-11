@@ -29,7 +29,7 @@ CYAN		=	"\033[1;36m"
 # =============================================================================
 
 
-CC			=	gcc
+CC			=	gcc -fsanitize=address -g3
 CFLAGS		=	#-Wall -Werror -Wextra
 MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
@@ -81,19 +81,19 @@ OBJS		=	$(SRCS:.c=.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(SRCS)
-				@echo ${YELLOW}"---> Compiling \n$${HEADER}"
+				@echo "---> Compiling \n$${HEADER}"
 				@${CC} $(CFLAGS) ${MLXFLAGS} $(SRCS) -o $(NAME)
-				@echo ${GREEN}"---> Compilation done."
+				@echo "---> Compilation done."
 
 clean		:
 				@rm -rf $(OBJS)
-				@echo ${PURPLE}"---> Cleaning object files..."
-				@echo ${PURPLE}"---> Cleaned!"
+				@echo "---> Cleaning object files..."
+				@echo "---> Cleaned!"
 
 fclean		:
 				@rm -rf $(OBJS)
 				@rm -rf $(NAME)
-				@echo ${RED}"---> Cleaning ${NAME} with it's object files..."
-				@echo ${RED}"---> All cleaned!"
+				@echo "---> Cleaning ${NAME} with it's object files..."
+				@echo "---> All cleaned!"
 
 re			:	fclean all

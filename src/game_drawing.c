@@ -67,6 +67,8 @@ void	draw_wall(t_img *img, int index, float hight, int color)
 	start = 0;
 	wall_start = (WIN_HIGHT / 2) - (hight / 2);
 	end = (WIN_HIGHT / 2) + (hight / 2);
+	
+		//write (2, "h", 1);
 	while (start < wall_start)
 	{
 		my_pixel_put(img, index, start, 0x99FFFF);

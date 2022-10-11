@@ -64,6 +64,7 @@ t_ray	*rays_render(t_img *img, t_player player, t_map map)
 		draw_wall(img, ray_index, rays[ray_index].wall_hight, 0x3333FF);
 		ray_index ++;
 		ray_ang += s;
+
 	}
 	return (rays);
 	//fprintf(stderr, "s = %f\r", s);

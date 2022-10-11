@@ -22,8 +22,11 @@ int	is_in_win(float x, float y)
 int	is_in_map(t_map map,float x, float y)
 {
 	
-	if (x < 0 || x > map.x_len * UNIT || y < 0 || y > map.y_len * UNIT)
+	if ((int)y < 0 || y >= map.y_len * UNIT || x < 0 || x >= (ft_strlen(map.map[(int)(y / UNIT)]) * UNIT))
+	{
+		// fprintf (stderr, "map_x = %d map_y = %d x = %f, y = %f\n", ft_strlen(map.map[(int)(y / UNIT)]) * UNIT, map.y_len * UNIT ,x, y);
 		return (0);
+	}
 	return (1);
 }
 
@@ -40,6 +43,7 @@ int	is_a_wall(t_map main_map, float x, float y)
 	// the x_len of each line                                                      //
 	/////////////////////////////////////////////////////////////////////////////////
 
+	//fprintf (stderr, "map_x = %d map_y = %d x = %f, y = %f\n", main_map.x_len * UNIT, main_map.y_len * UNIT ,x, y);
 	if (is_in_map(main_map, x, y) && map[(int)(y / UNIT)][(int)(x / UNIT)] == '1')
 	{
 		return (1);
