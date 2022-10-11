@@ -37,8 +37,6 @@ void	ray_casting(t_ray *ray, t_map map)
 	ray->len = sqrt((ray->start.x - ray->end.x) * (ray->start.x - ray->end.x) +
 					(ray->start.y - ray->end.y) * (ray->start.y - ray->end.y));
 	ray->wall_hight = (UNIT * WIN_WIDTH) / (ray->len * ray->ang_addj);
-	// if (ray->wall_hight > WIN_HIGHT)
-	// 	ray->wall_hight = WIN_HIGHT;
 }
 
 t_ray	vert_ray_init(t_player *player, float ang, t_map map)
