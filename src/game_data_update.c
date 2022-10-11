@@ -50,6 +50,26 @@ void	ang_update(t_ang *ang, float value)
 	}
 }
 
+int	check_sides(t_player *player, float *ang, char **map)
+{
+	int		x;
+	int		y;
+	int		i;
+
+	i = 0;
+	x = (player->x + cos((*ang + 30) * RAD) * SPEED - player->ang.x_ofs) / UNIT;
+	y = (player->y + sin((*ang + 30) * RAD) * SPEED - player->ang.y_ofs) / UNIT;
+	if (map[y][x] == '1')
+		i++;
+	x = (player->x + cos((*ang - 30) * RAD) * SPEED - player->ang.x_ofs) / UNIT;
+	y = (player->y + sin((*ang - 30) * RAD) * SPEED - player->ang.y_ofs) / UNIT;
+	if (map[y][x] == '1')
+		i++;
+	if (i == 2)
+		return (1);
+	return (0);
+}
+
 void	player_update(t_player *player, float *ang, char **map)
 {
 	int	x;
@@ -63,7 +83,7 @@ void	player_update(t_player *player, float *ang, char **map)
 	y = (player->y + player->dy * SPEED - player->ang.y_ofs) / UNIT;
 	player->can_move_f = 1;
 	player->can_move_b = 1;
-	if (map[y][x] == '1')
+	if (check_sides(player, ang, map) || map[y][x] == '1')
 		player->can_move_f = 0;
 	x = (player->x - player->dx * SPEED - player->ang.x_ofs) / UNIT;
 	y = (player->y - player->dy * SPEED - player->ang.y_ofs) / UNIT;
