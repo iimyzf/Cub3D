@@ -23,7 +23,7 @@
 
 # define INIT_ANG 0
 # define RO_SPEED 4
-# define SPEED 30
+# define SPEED 10
 # define COL_SPEED 2
 # define UNIT 50
 # define SCAL 0.2

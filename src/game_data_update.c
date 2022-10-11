@@ -54,7 +54,8 @@ void	player_update(t_player *player, float *ang, char **map)
 {
 	int	x;
 	int	y;
-
+	//  TO Do
+	// we need to chekc player sides
 	ang_update (&player->ang, *ang);
 	player->dx = cos(*ang * RAD);
 	player->dy = sin(*ang * RAD);
