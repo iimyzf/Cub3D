@@ -33,6 +33,7 @@ void	ray_casting(t_ray *ray, t_map map)
 	{
 		ray->end.x += ray->x_step;
 		ray->end.y += ray->y_step;
+		//write(2, "here\n", 5);
 	}
 	ray->len = sqrt((ray->start.x - ray->end.x) * (ray->start.x - ray->end.x) +
 					(ray->start.y - ray->end.y) * (ray->start.y - ray->end.y));
@@ -44,6 +45,7 @@ t_ray	vert_ray_init(t_player *player, float ang, t_map map)
 	t_ray v_ray;
 	
 	ray_init(player, &v_ray, ang);
+	v_ray.wall_color = 0x3333FF;
 	v_ray.end.x = ((int)v_ray.start.x / UNIT) * UNIT;
 	if (v_ray.ang.to_right)
 		v_ray.end.x += UNIT;
@@ -71,6 +73,7 @@ t_ray	hor_ray_init(t_player *player, float ang, t_map map)
 	t_ray h_ray;
 
 	ray_init(player, &h_ray, ang);
+	h_ray.wall_color = 0xFFFF00;
 	h_ray.end.y = ((int)h_ray.start.y / UNIT) * UNIT;
 	if (!h_ray.ang.to_up)
 		h_ray.end.y += UNIT;

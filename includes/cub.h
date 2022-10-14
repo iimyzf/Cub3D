@@ -21,16 +21,16 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-# define INIT_ANG 0
-# define RO_SPEED 4
-# define SPEED 10
+# define INIT_ANG 20
+# define RO_SPEED 3
+# define SPEED 15
 # define COL_SPEED 2
 # define UNIT 50
 # define SCAL 0.2
 # define MINI_UNIT (UNIT * SCAL)
 # define RAD M_PI / 180
 # define WIN_HIGHT 750
-# define WIN_WIDTH 1100
+# define WIN_WIDTH 1000
 # define FOV 60.0000
 # define RAY_OFS (FOV / WIN_WIDTH)
 
@@ -60,6 +60,7 @@ typedef struct s_ray
 	float	dy;
 	float	ang_addj;
 	float	step;
+	int		wall_color;
 	float	x_step;
 	float	y_step;
 	float	wall_hight;

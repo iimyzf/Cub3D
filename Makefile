@@ -69,8 +69,7 @@ SRCS		=	${LIBFT}/ft_atoi.c				\
 				${SRC}/rendering.c				\
 				${SRC}/ray_utils.c				\
 
-
-OBJS		=	$(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 
 # =============================================================================
@@ -85,14 +84,17 @@ $(NAME)		:	$(SRCS)
 				@${CC} $(CFLAGS) ${MLXFLAGS} $(SRCS) -o $(NAME)
 				@echo "---> Compilation done."
 
+%.o : %.c
+	@${CC} $(CFLAGS) -c $< -o $@ 
+
 clean		:
-				@rm -rf $(OBJS)
+				@rm -f $(OBJS)
 				@echo "---> Cleaning object files..."
 				@echo "---> Cleaned!"
 
 fclean		:
-				@rm -rf $(OBJS)
-				@rm -rf $(NAME)
+				@rm -f  $(OBJS)
+				@rm -f  $(NAME)
 				@echo "---> Cleaning ${NAME} with it's object files..."
 				@echo "---> All cleaned!"
 

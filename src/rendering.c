@@ -61,10 +61,9 @@ t_ray	*rays_render(t_img *img, t_player player, t_map map)
 	while (ray_index < WIN_WIDTH)
 	{
 		rays[ray_index] = short_ray_cast(player, map, ray_ang);
-		draw_wall(img, ray_index, rays[ray_index].wall_hight, 0x3333FF);
+		draw_wall(img, ray_index, rays[ray_index].wall_hight, rays[ray_index].wall_color);
 		ray_index ++;
 		ray_ang += s;
-
 	}
 	return (rays);
 	//fprintf(stderr, "s = %f\r", s);
@@ -109,5 +108,6 @@ int	rendering(t_data *data)
 	free(rays);
 	mlx_put_image_to_window(data->mlx, data->win.ptr, img.ptr, 0, 0);
 	mlx_destroy_image(data->mlx , img.ptr);
+	//usleep(15000);
 	return (0);
 }

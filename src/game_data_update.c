@@ -88,4 +88,5 @@ void	player_update(t_player *player, float *ang, char **map)
 	y = (player->y - player->dy * SPEED - player->ang.y_ofs) / UNIT;
 	if (check_sides(player, ang, map, -1) || map[y][x] == '1')
 		player->can_move_b = 0;
+	//fprintf(stderr, "player angel = %f\r", player->ang.value);
 }
