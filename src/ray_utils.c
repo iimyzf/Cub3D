@@ -65,6 +65,8 @@ t_ray	vert_ray_init(t_player *player, float ang, t_map map)
 		v_ray.step = fabs(v_ray.dy);
 	v_ray.dx = v_ray.dx / v_ray.step;
 	v_ray.dy = v_ray.dy / v_ray.step;
+	// if ((int)v_ray.end.y % UNIT == 0)
+	// 	v_ray.wall_color = 0xFFFFFF00;
 	return (v_ray);
 }
 
@@ -95,6 +97,8 @@ t_ray	hor_ray_init(t_player *player, float ang, t_map map)
 		h_ray.step = fabs(h_ray.dy);
 	h_ray.dx = h_ray.dx / h_ray.step;
 	h_ray.dy = h_ray.dy / h_ray.step;
+	// if ((int)h_ray.end.x % UNIT == 0)
+	// 	h_ray.wall_color = 0xFFFFFF00;
 	return (h_ray);
 }
 

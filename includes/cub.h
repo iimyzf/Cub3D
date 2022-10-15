@@ -61,6 +61,7 @@ typedef struct s_ray
 	float	ang_addj;
 	float	step;
 	int		wall_color;
+	int		*tex;
 	float	x_step;
 	float	y_step;
 	float	wall_hight;
@@ -90,6 +91,7 @@ typedef struct s_player
 
 typedef struct s_textures
 {
+	t_img			img;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -126,6 +128,7 @@ typedef	struct s_data
 	void		*mlx;
 	t_window	win;
 	t_img		img;
+	t_textures	text;
 	int			fd;
 	t_player	player;
 }	t_data;
@@ -160,6 +163,7 @@ void	draw_wall(t_img *img, int index, float hight, int color);
 int		is_in_win(float x, float y);
 int		is_in_map(t_map map,float x, float y);
 int		ft_strlen(char *str);
+void	*mlx_png_file_to_image(void *mlx_ptr, char *filename, int *width, int *height);
 t_ray	hor_ray_init(t_player *player, float ang, t_map map);
 
 #endif

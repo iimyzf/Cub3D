@@ -12,6 +12,7 @@
 
 #include "../includes/cub.h"
 
+
 int	main(int arv, char **arc)
 {
 	t_data	data;
@@ -22,10 +23,10 @@ int	main(int arv, char **arc)
 	if (data.fd <= 0)
 		exit(2);
 	map_check(&data);
-	scean_init(&data);
 	data.mlx = mlx_init();
 	data.win.ptr = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HIGHT, "Cub3D");
-	//mlx_loop_hook(data.mlx, rendering, &data);
+	scean_init(&data);
+	mlx_loop_hook(data.mlx, rendering, &data);
 	rendering(&data);
 	mlx_hook(data.win.ptr, 02, 1L<<9, key_hook, &data);
 	mlx_loop(data.mlx);

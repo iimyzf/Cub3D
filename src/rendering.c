@@ -96,18 +96,24 @@ void	player_render(t_img *img, t_player player, t_map map, t_ray *rays)
 int	rendering(t_data *data)
 {
 	t_img	img;
+	t_img	img2;
 	t_ray	*rays;
 	
 	mlx_clear_window(data->mlx, data->win.ptr);
 	img.ptr =  mlx_new_image(data->mlx, WIN_WIDTH, WIN_HIGHT);
 	img.addr = mlx_get_data_addr(img.ptr, &img.bit_per_pixel, &img.line_length,
 				&img.endian);
+	img2.ptr =  mlx_new_image(data->mlx, data->main_map.x_len * MINI_UNIT , data->main_map.y_len * MINI_UNIT);
+	img2.addr = mlx_get_data_addr(img2.ptr, &img2.bit_per_pixel, &img2.line_length,
+				&img2.endian);
 	rays = rays_render(&img, data->player, data->main_map);
-	map_render(&img, data->main_map.map);
-	player_render(&img, data->player, data->main_map, rays);
+	map_render(&img2, data->main_map.map);
+	player_render(&img2, data->player, data->main_map, rays);
 	free(rays);
 	mlx_put_image_to_window(data->mlx, data->win.ptr, img.ptr, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win.ptr, img2.ptr, 0, 0);
 	mlx_destroy_image(data->mlx , img.ptr);
+	mlx_destroy_image(data->mlx , img2.ptr);
 	//usleep(15000);
 	return (0);
 }

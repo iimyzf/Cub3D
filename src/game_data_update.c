@@ -57,12 +57,12 @@ int	check_sides(t_player *player, float *ang, char **map, int direct)
 	int		i;
 
 	i = 0;
-	x = (player->x + (cos((*ang + 45) * RAD) * SPEED - player->ang.x_ofs) * direct) / UNIT;
-	y = (player->y + (sin((*ang + 45) * RAD) * SPEED - player->ang.y_ofs) * direct) / UNIT;
+	x = (player->x + (cos((*ang + 50) * RAD) * SPEED - player->ang.x_ofs) * direct) / UNIT;
+	y = (player->y + (sin((*ang + 50) * RAD) * SPEED - player->ang.y_ofs) * direct) / UNIT;
 	if (map[y][x] == '1')
 		i++;
-	x = (player->x + (cos((*ang - 45) * RAD) * SPEED - player->ang.x_ofs) * direct) / UNIT;
-	y = (player->y + (sin((*ang - 45) * RAD) * SPEED - player->ang.y_ofs) * direct) / UNIT;
+	x = (player->x + (cos((*ang - 50) * RAD) * SPEED - player->ang.x_ofs) * direct) / UNIT;
+	y = (player->y + (sin((*ang - 50) * RAD) * SPEED - player->ang.y_ofs) * direct) / UNIT;
 	if (map[y][x] == '1')
 		i++;
 	if (i == 2)
