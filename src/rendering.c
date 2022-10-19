@@ -114,6 +114,5 @@ int	rendering(t_data *data)
 	//mlx_put_image_to_window(data->mlx, data->win.ptr, img2.ptr, 0, 0);
 	mlx_destroy_image(data->mlx , img.ptr);
 	mlx_destroy_image(data->mlx , img2.ptr);
-	//usleep(15000);
 	return (0);
 }
