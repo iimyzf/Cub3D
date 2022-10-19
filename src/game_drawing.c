@@ -58,30 +58,37 @@ void	draw_ray(t_img *img, t_ray ray, int color)
 	}
 }
 
-void	draw_wall(t_img *img, int index, float hight, int color)
+void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
 {
 	float	start;
 	float	wall_start;
 	float	end;
+	int		color;
+	float	y;
 
 	start = 0;
-	wall_start = (WIN_HIGHT / 2) - (hight / 2);
-	end = (WIN_HIGHT / 2) + (hight / 2);
+	color =  0x3333FF;
+	// if (ray.wall_hight > WIN_HIGHT)
+	// 	ray.wall_hight = WIN_HIGHT;
+	wall_start = (WIN_HIGHT / 2) - (ray.wall_hight / 2);
+	end = (WIN_HIGHT / 2) + (ray.wall_hight / 2);
 	
 		//write (2, "h", 1);
 	while (start < wall_start)
 	{
-		my_pixel_put(img, index, start, 0x99FFFF);
+		my_pixel_put(img, index, start, 0x000000);
 		start++;
 	}
 	while (start <= end)
 	{
+		//fprintf (stderr, "y = %d\n", (int)(((start - wall_start) * text.img.y) / ray.wall_hight));
+		color = text.colors[ray.color_index][(int)(((start - wall_start) * text.img.y) / ray.wall_hight)];
 		my_pixel_put(img, index, start, color);
 		start++;
 	}
 	while (start <= WIN_HIGHT)
 	{
-		my_pixel_put(img, index, start, 0xC0C0C0);
+		my_pixel_put(img, index, start, 0x000000);
 		start++;
 	}
 }
@@ -107,7 +114,6 @@ void	dda_algo(t_img *img, float x0, float y0, float x1, float y1, int color)
 	iy = dy / steps;
 	for (int i = 0; i <= steps && i < 5000; i++)
 	{
-		
 		my_pixel_put(img, x, y, color);
 		x += ix;
 		y += iy;

@@ -40,6 +40,23 @@ void	ray_casting(t_ray *ray, t_map map)
 	ray->wall_hight = (UNIT * WIN_WIDTH) / (ray->len * ray->ang_addj);
 }
 
+void	set_ray_tex(t_ray *ray, t_textures text)
+{
+	int	x;
+	int	y;
+
+	ray->tex = malloc(sizeof(int) * text.img.y);
+	y = 0;
+	x = ((int)(ray->end.y - ray->ang.y_ofs) % UNIT) * (text.img.x / UNIT);
+	fprintf(stderr, "x = %d\n", x);
+	while (y < text.img.y)
+	{
+		ray->tex[y] = get_colors(text, x, y);
+		y++;
+	}
+	fprintf(stderr, "y = %d\n", y);
+}
+
 t_ray	vert_ray_init(t_player *player, float ang, t_map map)
 {
 	t_ray v_ray;
@@ -65,8 +82,7 @@ t_ray	vert_ray_init(t_player *player, float ang, t_map map)
 		v_ray.step = fabs(v_ray.dy);
 	v_ray.dx = v_ray.dx / v_ray.step;
 	v_ray.dy = v_ray.dy / v_ray.step;
-	// if ((int)v_ray.end.y % UNIT == 0)
-	// 	v_ray.wall_color = 0xFFFFFF00;
+	v_ray.color_index = ((int)(v_ray.end.y) % UNIT) * (map.text.img.x / UNIT);
 	return (v_ray);
 }
 
@@ -97,8 +113,7 @@ t_ray	hor_ray_init(t_player *player, float ang, t_map map)
 		h_ray.step = fabs(h_ray.dy);
 	h_ray.dx = h_ray.dx / h_ray.step;
 	h_ray.dy = h_ray.dy / h_ray.step;
-	// if ((int)h_ray.end.x % UNIT == 0)
-	// 	h_ray.wall_color = 0xFFFFFF00;
+	h_ray.color_index = ((int)(h_ray.end.x) % UNIT) * (map.text.img.x / UNIT);
 	return (h_ray);
 }
 

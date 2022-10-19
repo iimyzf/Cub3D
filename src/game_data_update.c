@@ -78,14 +78,14 @@ void	player_update(t_player *player, float *ang, char **map)
 	ang_update (&player->ang, *ang);
 	player->dx = cos(*ang * RAD);
 	player->dy = sin(*ang * RAD);
-	x = (player->x + player->dx * SPEED - player->ang.x_ofs) / UNIT;
-	y = (player->y + player->dy * SPEED - player->ang.y_ofs) / UNIT;
+	x = (player->x + player->dx * SPEED * 2 - player->ang.x_ofs) / UNIT;
+	y = (player->y + player->dy * SPEED * 2 - player->ang.y_ofs) / UNIT;
 	player->can_move_f = 1;
 	player->can_move_b = 1;
 	if (check_sides(player, ang, map, 1) || map[y][x] == '1')
 		player->can_move_f = 0;
-	x = (player->x - player->dx * SPEED - player->ang.x_ofs) / UNIT;
-	y = (player->y - player->dy * SPEED - player->ang.y_ofs) / UNIT;
+	x = (player->x - player->dx * SPEED * 2 - player->ang.x_ofs) / UNIT;
+	y = (player->y - player->dy * SPEED * 2 - player->ang.y_ofs) / UNIT;
 	if (check_sides(player, ang, map, -1) || map[y][x] == '1')
 		player->can_move_b = 0;
 	//fprintf(stderr, "player angel = %f\r", player->ang.value);
