@@ -68,32 +68,26 @@ void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
 
 	start = 0;
 	color =  0x3333FF;
-	// if (ray.wall_hight > WIN_HIGHT)
-	// 	ray.wall_hight = WIN_HIGHT;
 	wall_start = (WIN_HIGHT / 2) - (ray.wall_hight / 2);
 	end = (WIN_HIGHT / 2) + (ray.wall_hight / 2);
-	
-		//write (2, "h", 1);
 	while (start < wall_start)
 	{
-		my_pixel_put(img, index, start, 0x000000);
+		my_pixel_put(img, index, start, 0x66FFFF);
 		start++;
 	}
 	while (start <= end)
 	{
-		//fprintf (stderr, "y = %d\n", (int)(((start - wall_start) * text.img.y) / ray.wall_hight));
 		color = text.colors[ray.color_index][((start - wall_start) * text.img.y) / ray.wall_hight];
 		my_pixel_put(img, index, start, color);
 		start++;
 	}
 	while (start <= WIN_HIGHT)
 	{
-		my_pixel_put(img, index, start, 0x000000);
+		my_pixel_put(img, index, start, 0xE0E0E0);
 		start++;
 	}
 }
 
-//void	draw_rays()
 
 void	dda_algo(t_img *img, float x0, float y0, float x1, float y1, int color)
 {

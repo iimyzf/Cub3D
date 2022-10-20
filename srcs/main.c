@@ -31,3 +31,24 @@ int	main(int arv, char **arc)
 	mlx_hook(data.win.ptr, 02, 1L<<9, key_hook, &data);
 	mlx_loop(data.mlx);
 }
+
+
+/*
+
+TO DO:
+
+fix player collisions
+merge map parcing
+norm the code
+optimize RAM
+handle multiple keys press
+Add side moves
+
+DOING:
+optimize CPU using
+set walls oriantations
+ 
+DONE:
+
+
+*/

@@ -22,8 +22,8 @@
 # include "../libft/libft.h"
 
 # define INIT_ANG 20
-# define RO_SPEED 4
-# define SPEED 30
+# define RO_SPEED 3
+# define SPEED 10
 # define COL_SPEED 2
 # define UNIT 50
 # define SCAL 0.2
@@ -61,6 +61,7 @@ typedef struct s_ray
 	float	ang_addj;
 	float	step;
 	int		wall_color;
+	int		is_vert;
 	int		*tex;
 	int		color_index;
 	float	x_step;
@@ -164,6 +165,7 @@ void	bloc_draw(t_img *img, int x, int y, int color);
 int		is_a_wall(t_map main_map,float x, float y);
 void	draw_ray(t_img *img, t_ray ray, int color);
 void	ray_casting(t_ray *ray, t_map map);
+void	ray_add_wall_data(t_ray *ray, t_map map);
 void	draw_wall(t_img *img, int index, t_ray ray, t_textures text);
 int		is_in_win(float x, float y);
 int		is_in_map(t_map map,float x, float y);

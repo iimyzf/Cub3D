@@ -42,9 +42,15 @@ t_ray	short_ray_cast(t_player player, t_map map, float ray_ang)
 	h_ray = hor_ray_init(&player, ray_ang, map);
 	v_ray = vert_ray_init(&player, ray_ang, map);
 	if (h_ray.len > v_ray.len)
+	{
+		ray_add_wall_data(&v_ray, map);
 		return (v_ray);
+	}
 	else
+	{
+		ray_add_wall_data(&h_ray, map);
 		return (h_ray);
+	}
 }
 
 t_ray	*rays_render(t_img *img, t_player player, t_map map)
@@ -111,7 +117,7 @@ int	rendering(t_data *data)
 	player_render(&img2, data->player, data->main_map, rays);
 	free(rays);
 	mlx_put_image_to_window(data->mlx, data->win.ptr, img.ptr, 0, 0);
-	//mlx_put_image_to_window(data->mlx, data->win.ptr, img2.ptr, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win.ptr, img2.ptr, 0, 0);
 	mlx_destroy_image(data->mlx , img.ptr);
 	mlx_destroy_image(data->mlx , img2.ptr);
 
