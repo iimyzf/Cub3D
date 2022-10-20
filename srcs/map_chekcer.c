@@ -63,7 +63,7 @@ void	map_check(t_data *data)
 			break;
 		line = ft_strjoin(line, c);
 	}
-	data->main_map.map = ft_split(line, '\n');
+	data->main_map.map = my_split(line, '\n');
 	i = 0;
 	data->main_map.x_len = 0;
 	while (data->main_map.map && data->main_map.map[i])

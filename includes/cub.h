@@ -61,9 +61,9 @@ typedef struct s_ray
 	float	ang_addj;
 	float	step;
 	int		wall_color;
-	int		is_vert;
 	int		*tex;
 	int		color_index;
+	int		is_vert;
 	float	x_step;
 	float	y_step;
 	int		wall_hight;
@@ -88,7 +88,6 @@ typedef struct s_player
 	int			can_move_b;
 	float		dx;
 	float		dy;
-	char		type;
 	t_ang		ang;
 }	t_player;
 
@@ -104,7 +103,6 @@ typedef struct s_textures
 
 typedef struct s_color
 {
-	unsigned int	clr;
 	unsigned int	c;
 	unsigned int	f;
 	int				r;
@@ -118,7 +116,6 @@ typedef	struct s_map
 	t_textures	text;
 	int			x_len;
 	int			y_len;
-	char		type;
 	t_player	player;
 }	t_map;
 
@@ -138,10 +135,10 @@ typedef	struct s_data
 	t_textures	text;
 	int			fd;
 	t_player	player;
-	t_color		color;
 }	t_data;
 
 int		check_file(char *path);
+char	**my_split(char const *s, char c);
 int		get_colors(t_textures text, int x,int y);
 int		check_for_player(char c, int *count);
 char	*get_str(char *str);
@@ -178,7 +175,7 @@ int		is_in_map(t_map map,float x, float y);
 int		ft_strlen(char *str);
 void	*mlx_png_file_to_image(void *mlx_ptr, char *filename, int *width, int *height);
 t_ray	hor_ray_init(t_player *player, float ang, t_map map);
-void	map_checking(char **map, t_data *data);
+//void	map_checking(char **map, t_data *data);
 char	**get_the_map(char **map);
 char	**get_first_six_lines(char **map);
 

@@ -49,6 +49,7 @@ SRCS		=	${LIBFT}/ft_atoi.c				\
 				${LIBFT}/ft_isalnum.c			\
 				${LIBFT}/ft_isdigit.c			\
 				${LIBFT}/ft_split.c				\
+				${LIBFT}/my_split.c				\
 				${LIBFT}/ft_strcmp.c			\
 				${LIBFT}/ft_strdup.c			\
 				${LIBFT}/ft_strjoin.c			\

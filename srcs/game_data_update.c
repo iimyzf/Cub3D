@@ -83,7 +83,7 @@ void	player_update(t_player *player, float *ang, char **map)
 	player->can_move_f = 1;
 	player->can_move_b = 1;
 	if (check_sides(player, ang, map, 1) || map[y][x] == '1')
-		player->can_move_f = 0;
+	 	player->can_move_f = 0;
 	x = (player->x - player->dx * SPEED * 4 - player->ang.x_ofs) / UNIT;
 	y = (player->y - player->dy * SPEED * 4 - player->ang.y_ofs) / UNIT;
 	if (check_sides(player, ang, map, -1) || map[y][x] == '1')
