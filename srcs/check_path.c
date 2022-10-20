@@ -6,11 +6,11 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:29:15 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/07 12:48:20 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/19 21:07:59 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub.h"
+#include "../includes/cub.h"
 
 void	get_image(char *str, t_data *data)
 {
@@ -19,6 +19,8 @@ void	get_image(char *str, t_data *data)
 		&data->win->height, &data->win->width);
 	if (data->img.ptr == NULL)
 		print_and_exit("Path invalid!");
+	(void)str;
+	(void)data;
 }
 
 unsigned int rgb_to_int(int r, int g, int b)
@@ -26,11 +28,10 @@ unsigned int rgb_to_int(int r, int g, int b)
     return (r * 256 * 256) + (g * 256) + b;
 }
 
-unsigned int	get_color(char *str, t_color *color)
+unsigned int	get_color(char *str, t_data *data)
 {
 	int				i;
 	int				j;
-	unsigned int	color;
 	char			**rgb;
 
 	i = 0;
@@ -46,22 +47,20 @@ unsigned int	get_color(char *str, t_color *color)
 			print_and_exit("Invalid color!");
 		j++;
 	}
-	color->r = atoi(rgb[0]);
-	color->g = atoi(rgb[1]);
-	color->b = atoi(rgb[2]);
-	if (color->r < 0 || color->r > 255 || color->g < 0
-		|| color->g > 255 || color->b < 0 || color->b > 255)
+	data->color.r = atoi(rgb[0]);
+	data->color.g = atoi(rgb[1]);
+	data->color.b = atoi(rgb[2]);
+	if (data->color.r < 0 || data->color.r > 255 || data->color.g < 0
+		|| data->color.g > 255 || data->color.b < 0 || data->color.b > 255)
 		print_and_exit("Invalid color!");
-	color = rgb_to_int(color->r, color->g, color->b);
-	return (color);
+	data->color.clr = rgb_to_int(data->color.r, data->color.g, data->color.b);
+	return (data->color.clr);
 }
 
 char	*get_str(char *str)
 {
-	int		i;
 	char	*string;
 
-	i = 0;
 	string = NULL;
 	if (str[0] == 'N' && str[1] == 'O' && (str[2] == ' ' || str[2] == '\t'))
 		string = ft_strdup("NO");
@@ -80,29 +79,33 @@ char	*get_str(char *str)
 	return (string);
 }
 
-void	which_str(char *str, t_color *color)
+void	which_str(char *str, t_data *data)
 {
-	int		i;
 	char	*string;
 
 	string = get_str(str);
 	if (ft_strlen(str) > ft_strlen(string) + 1)
 		str += ft_strlen(string);
 	while (*str && *str == ' ')
-		*str++;
+		str++;
 	if (!ft_strcmp(string, "NO") || !ft_strcmp(string, "SO")
 		|| !ft_strcmp(string, "WE") || !ft_strcmp(string, "EA"))
-		get_image(str, color);
+	{
+		fprintf(stderr, "GOT HERE!\n");
+		get_image(str, data);
+	}
 	else if (!ft_strcmp(string, "F") || !ft_strcmp(string, "C"))
 	{
 		if (!ft_strcmp(string, "C"))
-			color->c = get_color(str, color);
+			data->color.c = get_color(str, data);
 		else
-			color->f = get_color(str, color);
+			data->color.f = get_color(str, data);
 	}
+	else
+		print_and_exit("Error occured! Please check again!");
 }
 
-void	get_element(char *map, t_color *color)
+void	get_element(char *map, t_data *data)
 {
 	int		i;
 	char	*str;
@@ -111,7 +114,7 @@ void	get_element(char *map, t_color *color)
 	while (map[i] && i < 6)
 	{
 		str = ft_strtrim(map, " ");
-		which_str(str, color);
+		which_str(str, data);
 		i++;
 	}
 }

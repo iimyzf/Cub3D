@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 00:19:42 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/17 22:24:01 by yagnaou          ###   ########.fr       */
+/*   Created: 2022/10/19 10:56:54 by yagnaou           #+#    #+#             */
+/*   Updated: 2022/10/19 10:57:17 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "libft.h"
 
-int	check_file(char *path)
+void	ft_bzero(void *s, size_t n)
 {
-	int		i;
-	int		j;
-	char	*cub;
+	size_t	i;
+	char	*k;
 
 	i = 0;
-	j = 3;
-	cub = ".cub";
-	if (ft_strlen(path) <= 4)
-		return (0);
-	while (path[i])
-		i++;
-	i--;
-	while (j >= 0)
+	k = s;
+	while (i < n)
 	{
-		if (cub[j] != path[i])
-			return (0);
-		i--;
-		j--;
+		k[i] = 0;
+		i++;
 	}
-	return (1);
 }

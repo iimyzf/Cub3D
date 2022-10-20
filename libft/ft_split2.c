@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
+/*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 00:19:42 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/17 22:24:01 by yagnaou          ###   ########.fr       */
+/*   Created: 2022/09/25 17:19:13 by yagnaou           #+#    #+#             */
+/*   Updated: 2022/10/14 22:13:00 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "libft.h"
 
-int	check_file(char *path)
+int	ft_split2(char *s, char c)
 {
+	int		n;
 	int		i;
-	int		j;
-	char	*cub;
 
+	if (!s)
+		return (NULL);
+	n = 0;
 	i = 0;
-	j = 3;
-	cub = ".cub";
-	if (ft_strlen(path) <= 4)
-		return (0);
-	while (path[i])
-		i++;
-	i--;
-	while (j >= 0)
+	while (s[i] && n != 6)
 	{
-		if (cub[j] != path[i])
-			return (0);
-		i--;
-		j--;
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i])
+			n++;
 	}
-	return (1);
+	while (s[i] == c)
+			i++;
+	return (i);
 }

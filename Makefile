@@ -6,7 +6,7 @@
 #    By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/25 00:12:37 by yagnaou           #+#    #+#              #
-#    Updated: 2022/10/07 12:53:04 by yagnaou          ###   ########.fr        #
+#    Updated: 2022/10/19 10:58:38 by yagnaou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ CYAN		=	"\033[1;36m"
 
 
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
-MLXFLAGS	=	-mlx -framework OpenGL -framework AppKit
+CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g3
+MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
 
 # =============================================================================
@@ -39,27 +39,28 @@ MLXFLAGS	=	-mlx -framework OpenGL -framework AppKit
 # =============================================================================
 
 
-NAME		=	cub
+NAME		=	Cub3D
 INCLUDE		=	srcs/include/
-LIBFT		=	srcs/libft/
+LIBFT		=	libft/
 SRC			=	srcs/
 
-SRCS		=	${LIBFT}/ft_atoi.c		\
-				${LIBFT}/ft_calloc.c	\
-				${LIBFT}/ft_isalnum.c	\
-				${LIBFT}/ft_isdigit.c	\
-				${LIBFT}/ft_split.c		\
-				${LIBFT}/ft_strcmp.c	\
-				${LIBFT}/ft_strdup.c	\
-				${LIBFT}/ft_strjoin.c	\
-				${LIBFT}/ft_strlen.c	\
-				${LIBFT}/ft_strtrim.c	\
-				${LIBFT}/ft_substr.c	\
-				${SRC}/check_file.c		\
-				${SRC}/check_for.c		\
-				${SRC}/check_map.c		\
-				${SRC}/check_path.c		\
-				${SRC}/cub.c			\
+SRCS		=	${LIBFT}ft_atoi.c			\
+				${LIBFT}ft_bzero.c			\
+				${LIBFT}ft_calloc.c			\
+				${LIBFT}ft_isalnum.c		\
+				${LIBFT}ft_isdigit.c		\
+				${LIBFT}ft_split.c			\
+				${LIBFT}ft_strcmp.c			\
+				${LIBFT}ft_strdup.c			\
+				${LIBFT}ft_strjoin.c		\
+				${LIBFT}ft_strlen.c			\
+				${LIBFT}ft_strtrim.c		\
+				${LIBFT}ft_substr.c			\
+				${SRC}check_file.c			\
+				${SRC}check_for.c			\
+				${SRC}check_map.c			\
+				${SRC}check_path.c			\
+				${SRC}cub.c					\
 
 
 OBJS		=	$(SRCS:.c=.o)
@@ -73,7 +74,7 @@ OBJS		=	$(SRCS:.c=.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(SRCS)
-				@echo ${YELLOW}"---> Compiling \n$${HEADER}"
+				@echo ${YELLOW}"---> Compiling..."
 				@${CC} $(CFLAGS) ${MLXFLAGS} $(SRCS) -o $(NAME)
 				@echo ${GREEN}"---> Compilation done."
 
