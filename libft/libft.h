@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 17:14:33 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/07 12:15:05 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/19 10:57:32 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strdup(char *src);
 char	*ft_strtrim(char *s1, char *set);
 char	**ft_split(char *s, char c);
+void	ft_bzero(void *s, size_t n);
 
 #endif

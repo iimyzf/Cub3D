@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:30:01 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/07 12:47:05 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/19 21:17:37 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct s_textures
 
 typedef struct s_color
 {
+	unsigned int	clr;
 	unsigned int	c;
 	unsigned int	f;
 	int				r;
@@ -117,6 +118,7 @@ typedef	struct s_map
 	t_textures	text;
 	int			x_len;
 	int			y_len;
+	char		type;
 	t_player	player;
 }	t_map;
 
@@ -136,16 +138,20 @@ typedef	struct s_data
 	t_textures	text;
 	int			fd;
 	t_player	player;
+	t_color		color;
 }	t_data;
 
 int		check_file(char *path);
 int		get_colors(t_textures text, int x,int y);
 int		check_for_player(char c, int *count);
+char	*get_str(char *str);
+char	*get_next_line(int fd);
 void	print_and_exit(char *str);
-void	read_map(int fd, t_data *data);
-void	check_for_end(t_map *map, int i, int j);
-void	check_for_space(t_map *map, int i, int j);
-void	check_top_bottom_tab(t_map *map, int i, int j, int len);
+char	**read_map(char *arg);
+void	get_element(char *map, t_data *data);
+void	check_for_end(char **map, int i, int j);
+void	check_for_space(char **map, int i, int j);
+void	check_udrl(char **map, int i, int j, int len);
 void	check_for_newline(char *str);
 int		scean_init(t_data	*data);
 t_ray	*rays_render(t_img *img, t_player player, t_map map);
@@ -172,5 +178,8 @@ int		is_in_map(t_map map,float x, float y);
 int		ft_strlen(char *str);
 void	*mlx_png_file_to_image(void *mlx_ptr, char *filename, int *width, int *height);
 t_ray	hor_ray_init(t_player *player, float ang, t_map map);
+void	map_checking(char **map, t_data *data);
+char	**get_the_map(char **map);
+char	**get_first_six_lines(char **map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 17:19:13 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/09/28 18:44:15 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/14 22:04:32 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**ft_split(char *s, char c)
 	arr = (char **)malloc(sizeof(char *) * (ft_hmw(s, c) + 1));
 	if (!arr)
 		return (NULL);
-	while (*s)
+	while (*s && n != 6)
 	{
 		while (*s == c)
 			s++;

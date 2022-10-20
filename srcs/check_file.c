@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 22:30:00 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/19 11:20:25 by yagnaou          ###   ########.fr       */
+/*   Created: 2022/09/25 00:19:42 by yagnaou           #+#    #+#             */
+/*   Updated: 2022/10/17 22:24:01 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub.h"
 
-int	ft_isalnum(int c)
+int	check_file(char *path)
 {
-	if (c == 'W' || c == 'N' || c == 'E' || c == 'S' || c == '1' || c == '0' || c == ' ')
-		return (1);
-	return (0);
+	int		i;
+	int		j;
+	char	*cub;
+
+	i = 0;
+	j = 3;
+	cub = ".cub";
+	if (ft_strlen(path) <= 4)
+		return (0);
+	while (path[i])
+		i++;
+	i--;
+	while (j >= 0)
+	{
+		if (cub[j] != path[i])
+			return (0);
+		i--;
+		j--;
+	}
+	return (1);
 }
