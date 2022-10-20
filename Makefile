@@ -55,10 +55,6 @@ SRCS		=	${LIBFT}/ft_atoi.c				\
 				${LIBFT}/ft_strlen.c			\
 				${LIBFT}/ft_strtrim.c			\
 				${LIBFT}/ft_substr.c			\
-				${SRC}/check_file.c				\
-				${SRC}/check_for.c				\
-				${SRC}/check_map.c				\
-				${SRC}/check_path.c				\
 				${SRC}/main.c					\
 				${SRC}/game_cords_check.c		\
 				${SRC}/game_data_init.c			\
