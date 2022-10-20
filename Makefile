@@ -42,7 +42,7 @@ MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 NAME		=	cub
 INCLUDE		=	includes/
 LIBFT		=	libft/
-SRC			=	src/
+SRC			=	srcs/
 
 SRCS		=	${LIBFT}/ft_atoi.c				\
 				${LIBFT}/ft_calloc.c			\
