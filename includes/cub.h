@@ -65,7 +65,7 @@ typedef struct s_ray
 	int		color_index;
 	float	x_step;
 	float	y_step;
-	float	wall_hight;
+	int		wall_hight;
 }	t_ray;
 
 typedef	struct s_img
@@ -87,6 +87,7 @@ typedef struct s_player
 	int			can_move_b;
 	float		dx;
 	float		dy;
+	char		type;
 	t_ang		ang;
 }	t_player;
 

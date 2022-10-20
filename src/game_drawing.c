@@ -60,8 +60,8 @@ void	draw_ray(t_img *img, t_ray ray, int color)
 
 void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
 {
-	float	start;
-	float	wall_start;
+	int	start;
+	int	wall_start;
 	float	end;
 	int		color;
 	float	y;
@@ -82,7 +82,7 @@ void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
 	while (start <= end)
 	{
 		//fprintf (stderr, "y = %d\n", (int)(((start - wall_start) * text.img.y) / ray.wall_hight));
-		color = text.colors[ray.color_index][(int)(((start - wall_start) * text.img.y) / ray.wall_hight)];
+		color = text.colors[ray.color_index][((start - wall_start) * text.img.y) / ray.wall_hight];
 		my_pixel_put(img, index, start, color);
 		start++;
 	}

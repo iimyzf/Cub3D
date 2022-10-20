@@ -64,7 +64,7 @@ int	scean_init(t_data	*data)
 	data->player.y = 300;
 	ang_update(&data->player.ang, INIT_ANG);
 	player_update(&data->player, &data->player.ang.value, data->main_map.map);
-	data->main_map.text.img.ptr = mlx_xpm_file_to_image(data->mlx, "tex3.xpm", &data->main_map.text.img.x, &data->main_map.text.img.y);
+	data->main_map.text.img.ptr = mlx_xpm_file_to_image(data->mlx, "texbb.xpm", &data->main_map.text.img.x, &data->main_map.text.img.y);
 	if (!data->main_map.text.img.ptr)
 		return (0);
 	data->main_map.text.img.addr = mlx_get_data_addr(data->main_map.text.img.ptr, &data->main_map.text.img.bit_per_pixel, &data->main_map.text.img.line_length, &data->main_map.text.img.endian);

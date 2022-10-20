@@ -40,23 +40,6 @@ void	ray_casting(t_ray *ray, t_map map)
 	ray->wall_hight = (UNIT * WIN_WIDTH) / (ray->len * ray->ang_addj);
 }
 
-void	set_ray_tex(t_ray *ray, t_textures text)
-{
-	int	x;
-	int	y;
-
-	ray->tex = malloc(sizeof(int) * text.img.y);
-	y = 0;
-	x = ((int)(ray->end.y - ray->ang.y_ofs) % UNIT) * (text.img.x / UNIT);
-	fprintf(stderr, "x = %d\n", x);
-	while (y < text.img.y)
-	{
-		ray->tex[y] = get_colors(text, x, y);
-		y++;
-	}
-	fprintf(stderr, "y = %d\n", y);
-}
-
 t_ray	vert_ray_init(t_player *player, float ang, t_map map)
 {
 	t_ray v_ray;
