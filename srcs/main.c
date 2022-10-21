@@ -26,8 +26,12 @@ int	main(int ac, char **av)
 	data.main_map.map = get_the_map(data.main_map.map);
 	map_checking(data.main_map.map, &data);
 	int	i = 0;
-	while (data.main_map.map[i])
+	while (data.main_map.map && data.main_map.map[i])
+	{
+		if(data.main_map.x_len < ft_strlen(data.main_map.map[i]))
+			data.main_map.x_len = ft_strlen(data.main_map.map[i]);
 		i++;
+	}
 	data.main_map.y_len = i;
 	data.mlx = mlx_init();
 	data.win.ptr = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HIGHT, "Cub3D");
