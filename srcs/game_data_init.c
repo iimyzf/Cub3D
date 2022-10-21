@@ -69,17 +69,5 @@ int	scean_init(t_data	*data)
 		return (0);
 	data->main_map.text.img.addr = mlx_get_data_addr(data->main_map.text.img.ptr, &data->main_map.text.img.bit_per_pixel, &data->main_map.text.img.line_length, &data->main_map.text.img.endian);
 	fill_colors(&data->main_map.text);
-	// int i = 0;
-	// int j = 0;
-	// while (data->main_map.text.colors[i])
-	// {
-	// 	j = 0;
-	// 	while (data->main_map.text.colors[i][j])
-	// 	{
-	// 		fprintf(stderr, "color = %d\n", data->main_map.text.colors[i][j]);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
 	return (1);
 }
