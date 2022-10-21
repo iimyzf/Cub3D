@@ -24,7 +24,7 @@
 # define INIT_ANG 20
 # define RO_SPEED 3
 # define SPEED 10
-# define COL_SPEED 2
+# define COL_SPEED 10
 # define UNIT 50
 # define SCAL 0.2
 # define MINI_UNIT (UNIT * SCAL)
@@ -92,14 +92,17 @@ typedef struct s_player
 	t_ang		ang;
 }	t_player;
 
+typedef	struct s_texture
+{
+	
+}	t_texture;
+
+
 typedef struct s_textures
 {
 	t_img			img;
 	int				**colors;
-	char			*no;
-	char			*so;
-	char			*we;
-	char			*ea;
+	
 }	t_textures;
 
 typedef struct s_color
@@ -162,7 +165,7 @@ int		key_hook(int keycode, t_data *data);
 //void	map_check(t_data *data);
 void	dda_algo(t_img *img, float x0, float y0, float x1, float y1, int color);
 int		rendering(t_data *data);
-void	add_collision_trans(t_player *player, char **map);
+void	add_collision_trans(t_player *player, char **map, int fact);
 void	ang_update(t_ang *ang, float value);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	player_update(t_player *player, float *ang, char **map);

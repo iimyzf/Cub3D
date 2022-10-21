@@ -49,17 +49,18 @@ int	main(int ac, char **av)
 TO DO:
 
 fix player collisions
-merge map parcing
 norm the code
 optimize RAM
 handle multiple keys press
 Add side moves
+Remove forbiden funcs
 
 DOING:
-optimize CPU using
 set walls oriantations
  
 DONE:
+optimize CPU using
+merge map parcing
 
 
 */
