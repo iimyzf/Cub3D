@@ -48,7 +48,6 @@ int	main(int ac, char **av)
 
 TO DO:
 
-fix player collisions
 norm the code
 optimize RAM
 handle multiple keys press
@@ -59,6 +58,7 @@ DOING:
 set walls oriantations
  
 DONE:
+fix player collisions
 optimize CPU using
 merge map parcing
 

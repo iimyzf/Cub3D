@@ -26,8 +26,8 @@ void	map_render(t_img *img, char	**map)
 		{
 			if(map[x][y] == '1')
 				bloc_draw(img, y * MINI_UNIT, x * MINI_UNIT, 0X999900);
-			else if (map[x][y] == '0')
-				bloc_draw(img, y * MINI_UNIT, x * MINI_UNIT, 0X000000);
+			else
+				bloc_draw(img, y * MINI_UNIT, x * MINI_UNIT, 0xFF000000);
 			y++;
 		}
 		x++;
@@ -94,7 +94,7 @@ void	player_render(t_img *img, t_player player, t_map map, t_ray *rays)
 	i = 0;
 	while (i < WIN_WIDTH)
 	{
-		draw_ray(img, rays[i], 0x99FF99);
+		draw_ray(img, rays[i], 0xFF3333);
 		i += 50;
 	}
 }

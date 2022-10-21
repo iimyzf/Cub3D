@@ -21,10 +21,10 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-# define INIT_ANG 20
+# define INIT_ANG 0.1
 # define RO_SPEED 3
 # define SPEED 10
-# define COL_SPEED 10
+# define COL_SPEED 5
 # define UNIT 50
 # define SCAL 0.2
 # define MINI_UNIT (UNIT * SCAL)
