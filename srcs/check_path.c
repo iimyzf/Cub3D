@@ -16,7 +16,7 @@ void	get_image(char *str, t_data *data)
 {
 	data->mlx = mlx_init();
 	data->img.ptr = mlx_xpm_file_to_image(data->mlx, str, 
-		&data->win->height, &data->win->width);
+		&data->win.high, &data->win.width);
 	if (data->img.ptr == NULL)
 		print_and_exit("Path invalid!");
 	(void)str;

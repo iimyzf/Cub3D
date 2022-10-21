@@ -85,7 +85,7 @@ void	map_checking(char **map, t_data *data)
 				data->player.y = j;
 				data->player.type = map[i][j];
 				map[i][j] = '0';
-				fprintf(stderr, "player x = %d, player y = %d \n", i, j);
+				//fprintf(stderr, "player x = %d, player y = %d \n", i, j);
 			}
 			j++;
 		}

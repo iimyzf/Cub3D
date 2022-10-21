@@ -88,6 +88,7 @@ typedef struct s_player
 	int			can_move_b;
 	float		dx;
 	float		dy;
+	char		type;
 	t_ang		ang;
 }	t_player;
 
@@ -108,6 +109,7 @@ typedef struct s_color
 	int				r;
 	int				g;
 	int				b;
+	int				clr;
 }	t_color;
 
 typedef	struct s_map
@@ -121,7 +123,7 @@ typedef	struct s_map
 
 typedef	struct s_window
 {
-	int		hight;
+	int		high;
 	int		width;
 	void	*ptr;
 }	t_window;
@@ -134,6 +136,7 @@ typedef	struct s_data
 	t_img		img;
 	t_textures	text;
 	int			fd;
+	t_color		color;
 	t_player	player;
 }	t_data;
 
@@ -156,7 +159,7 @@ t_img	*img_init(t_data *data);
 void	ray_init(t_player *player, t_ray *ray, float ang);
 t_ray	vert_ray_init(t_player *player, float ang, t_map map);
 int		key_hook(int keycode, t_data *data);
-void	map_check(t_data *data);
+//void	map_check(t_data *data);
 void	dda_algo(t_img *img, float x0, float y0, float x1, float y1, int color);
 int		rendering(t_data *data);
 void	add_collision_trans(t_player *player, char **map);
@@ -175,7 +178,7 @@ int		is_in_map(t_map map,float x, float y);
 int		ft_strlen(char *str);
 void	*mlx_png_file_to_image(void *mlx_ptr, char *filename, int *width, int *height);
 t_ray	hor_ray_init(t_player *player, float ang, t_map map);
-//void	map_checking(char **map, t_data *data);
+void	map_checking(char **map, t_data *data);
 char	**get_the_map(char **map);
 char	**get_first_six_lines(char **map);
 

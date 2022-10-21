@@ -45,11 +45,11 @@ LIBFT		=	libft/
 SRC			=	srcs/
 
 SRCS		=	${LIBFT}/ft_atoi.c				\
+				${LIBFT}/ft_bzero.c				\
 				${LIBFT}/ft_calloc.c			\
 				${LIBFT}/ft_isalnum.c			\
 				${LIBFT}/ft_isdigit.c			\
 				${LIBFT}/ft_split.c				\
-				${LIBFT}/my_split.c				\
 				${LIBFT}/ft_strcmp.c			\
 				${LIBFT}/ft_strdup.c			\
 				${LIBFT}/ft_strjoin.c			\
@@ -57,12 +57,15 @@ SRCS		=	${LIBFT}/ft_atoi.c				\
 				${LIBFT}/ft_strtrim.c			\
 				${LIBFT}/ft_substr.c			\
 				${SRC}/main.c					\
+				${SRC}/check_file.c				\
+				${SRC}/check_map.c				\
+				${SRC}/check_for.c				\
+				${SRC}/check_path.c				\
 				${SRC}/game_cords_check.c		\
 				${SRC}/game_data_init.c			\
 				${SRC}/game_data_update.c		\
 				${SRC}/game_drawing.c			\
 				${SRC}/key_hook.c				\
-				${SRC}/map_chekcer.c			\
 				${SRC}/rendering.c				\
 				${SRC}/ray_utils.c				\
 
