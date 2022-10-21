@@ -70,7 +70,7 @@ int	check_sides(t_player *player, float *ang, char **map, int direct)
 	y = (player->y + (sin((*ang - 45) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
 	if (map[y][x] == '1')
 		i++;
-	if (i >= 1)
+	if (i == 2)
 		return (1);
 	return (0);
 }
