@@ -85,16 +85,16 @@ void	player_render(t_img *img, t_player player, t_map map, t_ray *rays)
 	y = player.y;
 
 	i = 0;
-	while (i++ < 10)
-	{
-		x += player.dx;
-		y += player.dy;
-		my_pixel_put(img, (int)(x * SCAL), (int)(y * SCAL), 0XFFFFFF);
-	}
-	i = 0;
+	// while (i++ < 10)
+	// {
+	// 	x += player.dx;
+	// 	y += player.dy;
+	// 	my_pixel_put(img, (int)(x * SCAL), (int)(y * SCAL), 0XFFFFFF);
+	// }
+	// i = 0;
 	while (i < WIN_WIDTH)
 	{
-		draw_ray(img, rays[i], 0xFF3333);
+		draw_ray(img, rays[i], 0x3333FF);
 		i += 50;
 	}
 }
