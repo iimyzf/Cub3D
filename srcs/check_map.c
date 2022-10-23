@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 22:23:39 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/19 21:18:06 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/23 21:14:14 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,30 +165,3 @@ char	**get_the_map(char **file)
 	map[j] = NULL;
 	return (map);
 }
-
-// check if there's another map after the first one, if so, check it if it's valid or not
-
-// int	check_for_another_map(char **file)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	count;
-
-// 	i = 0;
-// 	count = 0;
-// 	while (file[i])
-// 	{
-// 		j = 0;
-// 		while (file[i][j])
-// 		{
-// 			if (file[i][j] == '\n')
-// 				count++;
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	fprintf(stderr, "count = %d\n", count);
-// 	if (count > 1)
-// 		return (1);
-// 	return (0);
-// }
