@@ -53,6 +53,7 @@ int	get_image(char *path, t_data *data, t_texture *text)
 	if (!text->img.ptr)
 		return (0);
 	text->img.addr = mlx_get_data_addr(text->img.ptr, &text->img.bit_per_pixel, &text->img.line_length, &text->img.endian);
+	fprintf(stderr, "x = %d y = %d\n", text->img.x, text->img.y);
 	fill_colors2(text);
 	return (1);
 }

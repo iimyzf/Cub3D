@@ -49,25 +49,6 @@ typedef	struct s_ang
 	int		y_ofs;
 }	t_ang;
 
-typedef struct s_ray
-{
-	float	len;
-	t_cords	start;
-	t_cords	end;
-	t_ang	ang;
-	float	ang_tg;
-	float	dx;
-	float	dy;
-	float	ang_addj;
-	float	step;
-	int		wall_color;
-	int		*tex;
-	int		color_index;
-	int		is_vert;
-	float	x_step;
-	float	y_step;
-	int		wall_hight;
-}	t_ray;
 
 typedef	struct s_img
 {
@@ -78,6 +59,8 @@ typedef	struct s_img
 	void	*ptr;
 	int		line_length;
 	int		endian;
+	int		c_clr;
+	int		f_clr;
 }	t_img;
 
 typedef struct s_player
@@ -121,6 +104,26 @@ typedef struct s_textures
 	int				**colors;
 }	t_textures;
 
+typedef struct s_ray
+{
+	float		len;
+	t_cords		start;
+	t_cords		end;
+	t_ang		ang;
+	t_texture	text;
+	float		ang_tg;
+	float		dx;
+	float		dy;
+	float		ang_addj;
+	float		step;
+	int			wall_color;
+	//int			*tex;
+	int			color_index;
+	int			is_vert;
+	float		x_step;
+	float		y_step;
+	int			wall_hight;
+}	t_ray;
 
 typedef	struct s_map
 {
@@ -182,7 +185,7 @@ int		is_a_wall(t_map main_map,float x, float y);
 void	draw_ray(t_img *img, t_ray ray, int color);
 void	ray_casting(t_ray *ray, t_map map);
 void	ray_add_wall_data(t_ray *ray, t_map map);
-void	draw_wall(t_img *img, int index, t_ray ray, t_textures text);
+void	draw_wall(t_img *img, int index, t_ray ray, t_texture text);
 int		is_in_win(float x, float y);
 int		is_in_map(t_map map,float x, float y);
 int		ft_strlen(char *str);

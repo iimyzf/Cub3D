@@ -58,7 +58,7 @@ void	draw_ray(t_img *img, t_ray ray, int color)
 	}
 }
 
-void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
+void	draw_wall(t_img *img, int index, t_ray ray, t_texture text)
 {
 	int	start;
 	int	wall_start;
@@ -74,7 +74,7 @@ void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
 		end = WIN_HIGHT;
 	while (start < wall_start)
 	{
-		my_pixel_put(img, index, start, text.the_color.c);
+		my_pixel_put(img, index, start, img->c_clr);
 		start++;
 	}
 	while (start <= end)
@@ -85,7 +85,7 @@ void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
 	}
 	while (start <= WIN_HIGHT)
 	{
-		my_pixel_put(img, index, start, text.the_color.f);
+		my_pixel_put(img, index, start, img->f_clr);
 		start++;
 	}
 }

@@ -67,7 +67,7 @@ t_ray	*rays_render(t_img *img, t_player player, t_map map)
 	while (ray_index < WIN_WIDTH)
 	{
 		rays[ray_index] = short_ray_cast(player, map, ray_ang);
-		draw_wall(img, ray_index, rays[ray_index], map.text);
+		draw_wall(img, ray_index, rays[ray_index], rays[ray_index].text);
 		ray_index ++;
 		ray_ang += s;
 	}
@@ -106,9 +106,7 @@ int	rendering(t_data *data)
 	t_ray	*rays;
 	
 	mlx_clear_window(data->mlx, data->win.ptr);
-	img.ptr =  mlx_new_image(data->mlx, WIN_WIDTH, WIN_HIGHT);
-	img.addr = mlx_get_data_addr(img.ptr, &img.bit_per_pixel, &img.line_length,
-				&img.endian);
+	img = *img_init(data);
 	img2.ptr =  mlx_new_image(data->mlx, data->main_map.x_len * MINI_UNIT , data->main_map.y_len * MINI_UNIT);
 	img2.addr = mlx_get_data_addr(img2.ptr, &img2.bit_per_pixel, &img2.line_length,
 				&img2.endian);

@@ -32,9 +32,9 @@ void	ray_add_wall_data(t_ray *ray, t_map map)
 	ray->dx = ray->dx / ray->step;
 	ray->dy = ray->dy / ray->step;
 	if (ray->is_vert)
-		ray->color_index = ((int)(ray->end.y) % UNIT) * (map.text.img.x / UNIT);
+		ray->color_index = ((int)(ray->end.y) % UNIT) * (map.text.no.img.x / UNIT);
 	else
-		ray->color_index = ((int)(ray->end.x) % UNIT) * (map.text.img.x / UNIT);
+		ray->color_index = ((int)(ray->end.x) % UNIT) * (map.text.no.img.x / UNIT);
 }
 
 void	ray_casting(t_ray *ray, t_map map)
@@ -73,6 +73,10 @@ t_ray	vert_ray_init(t_player *player, float ang, t_map map)
 	v_ray.y_step = v_ray.ang_tg * v_ray.x_step;
 	v_ray.ang.y_ofs = 0;
 	ray_casting(&v_ray, map);
+	if (v_ray.ang.to_right)
+		v_ray.text = map.text.ea;
+	else
+		v_ray.text = map.text.we;
 	return (v_ray);
 }
 
@@ -96,6 +100,10 @@ t_ray	hor_ray_init(t_player *player, float ang, t_map map)
 	if (h_ray.ang.to_right && h_ray.x_step < 0)
 		h_ray.x_step *= -1;
 	h_ray.ang.x_ofs = 0;
+	if (h_ray.ang.to_up)
+		h_ray.text = map.text.no;
+	else
+		h_ray.text = map.text.so;
 	ray_casting(&h_ray, map);
 	return (h_ray);
 }

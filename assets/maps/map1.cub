@@ -1,9 +1,9 @@
-NO tex0.xpm
-SO texbb.xpm
-WE texbb.xpm
-EA texbb.xpm
+NO no.xpm
+SO so.xpm
+WE we.xpm
+EA ea.xpm
 F 195,255,51
-C 0,255,255
+C 22,255,255
 
 11111111111111111111111111111
 10000000000000000000000010001
