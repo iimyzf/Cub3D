@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_drawing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azabir <azabir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 18:26:52 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/07 18:11:15 by azabir           ###   ########.fr       */
+/*   Updated: 2022/10/22 23:35:33 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
 		end = WIN_HIGHT;
 	while (start < wall_start)
 	{
-		my_pixel_put(img, index, start, 0x66FFFF);
+		my_pixel_put(img, index, start, text.the_color.c);
 		start++;
 	}
 	while (start <= end)
@@ -85,7 +85,7 @@ void	draw_wall(t_img *img, int index, t_ray ray, t_textures text)
 	}
 	while (start <= WIN_HIGHT)
 	{
-		my_pixel_put(img, index, start, 0xE0E0E0);
+		my_pixel_put(img, index, start, text.the_color.f);
 		start++;
 	}
 }

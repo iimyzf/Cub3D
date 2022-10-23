@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:30:01 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/19 21:17:37 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/22 23:33:48 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,6 @@ typedef struct s_player
 	t_ang		ang;
 }	t_player;
 
-typedef	struct s_texture
-{
-	
-}	t_texture;
-
-
-typedef struct s_textures
-{
-	t_img			img;
-	int				**colors;
-	
-}	t_textures;
-
 typedef struct s_color
 {
 	unsigned int	c;
@@ -114,6 +101,26 @@ typedef struct s_color
 	int				b;
 	int				clr;
 }	t_color;
+
+typedef struct s_texture
+{
+	t_img			img;
+	int				**colors;
+	t_color			the_color;
+	
+}	t_texture;
+
+typedef struct s_textures
+{
+	t_img			img;
+	t_texture		no;
+	t_texture		so;
+	t_texture		ea;
+	t_texture		we;
+	t_color			the_color;
+	int				**colors;
+}	t_textures;
+
 
 typedef	struct s_map
 {
@@ -151,7 +158,7 @@ char	*get_str(char *str);
 char	*get_next_line(int fd);
 void	print_and_exit(char *str);
 char	**read_map(char *arg);
-void	get_element(char *map, t_data *data);
+void	get_element(char **map, t_data *data);
 void	check_for_end(char **map, int i, int j);
 void	check_for_space(char **map, int i, int j);
 void	check_udrl(char **map, int i, int j, int len);

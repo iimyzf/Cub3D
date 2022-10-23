@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_data_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azabir <azabir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:55:27 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/07 12:06:14 by azabir           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:13:32 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ int	scean_init(t_data	*data)
 	data->player.y = 300;
 	ang_update(&data->player.ang, INIT_ANG);
 	player_update(&data->player, &data->player.ang.value, data->main_map.map);
-	data->main_map.text.img.ptr = mlx_xpm_file_to_image(data->mlx, "texbb.xpm", &data->main_map.text.img.x, &data->main_map.text.img.y);
-	if (!data->main_map.text.img.ptr)
-		return (0);
-	data->main_map.text.img.addr = mlx_get_data_addr(data->main_map.text.img.ptr, &data->main_map.text.img.bit_per_pixel, &data->main_map.text.img.line_length, &data->main_map.text.img.endian);
-	fill_colors(&data->main_map.text);
+	// data->main_map.text.img.ptr = mlx_xpm_file_to_image(data->mlx, "texbb.xpm", &data->main_map.text.img.x, &data->main_map.text.img.y);
+	// if (!data->main_map.text.img.ptr)
+	// 	return (0);
+	// data->main_map.text.img.addr = mlx_get_data_addr(data->main_map.text.img.ptr, &data->main_map.text.img.bit_per_pixel, &data->main_map.text.img.line_length, &data->main_map.text.img.endian);
+	// fill_colors(&data->main_map.text);
+	data->main_map.text.colors = data->main_map.text.no.colors;
 	return (1);
 }

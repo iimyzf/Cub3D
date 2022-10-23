@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:43:44 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/19 21:12:53 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/22 21:12:03 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int	main(int ac, char **av)
 	// 	data.main_map.map = get_the_map(data.main_map.map);
 	// }
 	map_checking(data.main_map.map, &data);
-	int i = 0;
-	fprintf(stderr, "\n============= Start of the map =============\n\n");
-	while (data.main_map.map[i])
-	{
-		fprintf(stderr, "%s", data.main_map.map[i]);
-		i++;
-	}
-	fprintf(stderr, "\n============== End of the map ==============\n");
+	// int i = 0;
+	// fprintf(stderr, "\n============= Start of the map =============\n\n");
+	// while (data.main_map.map[i])
+	// {
+	// 	fprintf(stderr, "%s", data.main_map.map[i]);
+	// 	i++;
+	// }
+	// fprintf(stderr, "\n============== End of the map ==============\n");
 	
 	//map_checking(data.main_map.map, &data);
 	//data.mlx = mlx_init();

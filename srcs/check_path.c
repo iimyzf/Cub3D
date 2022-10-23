@@ -6,21 +6,55 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:29:15 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/19 21:07:59 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:27:32 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-void	get_image(char *str, t_data *data)
+int	get_colors2(t_texture text, int x,int y)
 {
-	data->mlx = mlx_init();
-	data->img.ptr = mlx_xpm_file_to_image(data->mlx, str, 
-		&data->win.high, &data->win.width);
-	if (data->img.ptr == NULL)
-		print_and_exit("Path invalid!");
-	(void)str;
-	(void)data;
+	char    *pixel;
+	int	i = 0;
+	//fprintf(stderr, "line_len = %d\n", text.img.line_length);
+	if (x >= text.img.x || y >= text.img.y || x < 0 || y < 0)
+		return (0);
+	pixel = text.img.addr + (y * text.img.line_length + x * (text.img.bit_per_pixel / 8));
+	i = *(int *)pixel;
+	return (i);
+}
+
+void fill_colors2(t_texture *text)
+{
+	int	x;
+	int	y;
+
+	text->colors = malloc(sizeof(int *) * (text->img.x + 1));
+	x = 0;
+	while (x < text->img.x)
+	{
+		y = 0;
+		text->colors[x] = malloc(sizeof(int ) * (text->img.y + 1));
+		while (y < text->img.y)
+		{
+			text->colors[x][y] = get_colors2(*text, x, y);
+			y++;
+		}
+		text->colors[x][y] = 0;
+		x++;
+	}
+	text->colors[x] = NULL;
+}
+
+int	get_image(char *path, t_data *data, t_texture *text)
+{
+	//fprintf(stderr, "path = [%s]\n", path);
+	text->img.ptr = mlx_xpm_file_to_image(data->mlx, path, &text->img.x, &text->img.y);
+	if (!text->img.ptr)
+		return (0);
+	text->img.addr = mlx_get_data_addr(text->img.ptr, &text->img.bit_per_pixel, &text->img.line_length, &text->img.endian);
+	fill_colors2(text);
+	return (1);
 }
 
 unsigned int rgb_to_int(int r, int g, int b)
@@ -34,6 +68,7 @@ unsigned int	get_color(char *str, t_data *data)
 	int				j;
 	char			**rgb;
 
+	//fprintf(stderr, "IM HERE ASSAT!\n");
 	i = 0;
 	j = 0;
 	rgb = ft_split(str, ',');
@@ -75,7 +110,7 @@ char	*get_str(char *str)
 	else if (str[0] == 'C' && (str[1] == ' ' || str[1] == '\t'))
 		string = ft_strdup("C");
 	else
-		print_and_exit("Error occured! Please check again!");
+		print_and_exit("**** Error occured! Please check again!");
 	return (string);
 }
 
@@ -91,21 +126,31 @@ void	which_str(char *str, t_data *data)
 	if (!ft_strcmp(string, "NO") || !ft_strcmp(string, "SO")
 		|| !ft_strcmp(string, "WE") || !ft_strcmp(string, "EA"))
 	{
-		fprintf(stderr, "GOT HERE!\n");
-		get_image(str, data);
+		if (!ft_strcmp(string, "NO"))
+			if (!get_image(str, data, &data->main_map.text.no))
+				print_and_exit("Invalid NO path!");
+		if (!ft_strcmp(string, "SO"))
+			if (!get_image(str, data, &data->main_map.text.so))
+				print_and_exit("Invalid SO path!");
+		if (!ft_strcmp(string, "WE"))
+			if (!get_image(str, data, &data->main_map.text.we))
+				print_and_exit("Invalid WE path!");
+		if (!ft_strcmp(string, "EA"))
+			if (!get_image(str, data, &data->main_map.text.ea))
+				print_and_exit("Invalid EA path!");
 	}
 	else if (!ft_strcmp(string, "F") || !ft_strcmp(string, "C"))
 	{
 		if (!ft_strcmp(string, "C"))
-			data->color.c = get_color(str, data);
+			data->main_map.text.the_color.c = get_color(str, data);
 		else
-			data->color.f = get_color(str, data);
+			data->main_map.text.the_color.f = get_color(str, data);
 	}
 	else
-		print_and_exit("Error occured! Please check again!");
+		print_and_exit("---- Error occured! Please check again!");
 }
 
-void	get_element(char *map, t_data *data)
+void	get_element(char **map, t_data *data)
 {
 	int		i;
 	char	*str;
@@ -113,7 +158,9 @@ void	get_element(char *map, t_data *data)
 	i = 0;
 	while (map[i] && i < 6)
 	{
-		str = ft_strtrim(map, " ");
+		str = ft_strtrim(map[i], " ");
+		str = ft_strtrim(map[i], "\n");
+		//fprintf(stderr, "str = %s\n", str);
 		which_str(str, data);
 		i++;
 	}
