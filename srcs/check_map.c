@@ -81,8 +81,8 @@ void	map_checking(char **map, t_data *data)
 				do_this(map, i, j, &count, len);
 			if (ft_isplayer(map[i][j]))
 			{
-				data->player.x = i;
-				data->player.y = j;
+				data->player.x = j * UNIT;
+				data->player.y = i * UNIT;
 				data->player.type = map[i][j];
 				map[i][j] = '0';
 				//fprintf(stderr, "player x = %d, player y = %d \n", i, j);

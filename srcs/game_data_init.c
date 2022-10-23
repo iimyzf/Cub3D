@@ -25,10 +25,18 @@ t_img	*img_init(t_data *data)
 }
 
 int	scean_init(t_data	*data)
-{
-	data->player.x = 200;
-	data->player.y = 300;
-	ang_update(&data->player.ang, INIT_ANG);
+{	
+	float	ang;
+
+	if (data->player.type == 'W')
+		ang = 180.1;
+	else if (data->player.type == 'N')
+		ang = -90.1;
+	else if (data->player.type == 'S')
+		ang = 90.1;
+	else
+		ang = 0.1;
+	ang_update(&data->player.ang, ang);
 	player_update(&data->player, &data->player.ang.value, data->main_map.map);
 	data->main_map.text.colors = data->main_map.text.no.colors;
 	return (1);
