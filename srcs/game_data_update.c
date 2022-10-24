@@ -43,12 +43,12 @@ int	can_move_side(t_player *player, t_map map,int	to_right)
 	ang = player->ang.value + 90;
 	if (to_right)
 		ang = player->ang.value - 90;
-	x = player->x + cos(ang * RAD) * SPEED;
-	y = player->y + sin(ang * RAD) * SPEED;
+	x = player->x + cos(ang * RAD) * SPEED * 2;
+	y = player->y + sin(ang * RAD) * SPEED * 2;
 	if (!(!player->can_move_b && !player->can_move_f) && map.map[(int)y / UNIT][(int)x / UNIT] != '1')
 	{
-		player->x = x;
-		player->y = y;
+		player->x = x - cos(ang * RAD) * SPEED;
+		player->y = y - sin(ang * RAD) * SPEED;
 		return (1);
 	}
 	return (0);
@@ -84,12 +84,12 @@ int	check_sides(t_player *player, float *ang, char **map, int direct)
 	int		i;
 
 	i = 0;
-	x = (player->x + (cos((*ang + 10) * RAD) * 20 - player->ang.x_ofs) * direct) / UNIT;
-	y = (player->y + (sin((*ang + 10) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
+	x = (player->x + (cos((*ang + 30) * RAD) * 20 - player->ang.x_ofs) * direct) / UNIT;
+	y = (player->y + (sin((*ang + 30) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
 	if (map[y][x] == '1')
 		i++;
-	x = (player->x + (cos((*ang - 10) * RAD) * 20 - player->ang.x_ofs) * direct) / UNIT;
-	y = (player->y + (sin((*ang - 10) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
+	x = (player->x + (cos((*ang - 30) * RAD) * 20 - player->ang.x_ofs) * direct) / UNIT;
+	y = (player->y + (sin((*ang - 30) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
 	if (map[y][x] == '1')
 		i++;
 	if (i >= 1)

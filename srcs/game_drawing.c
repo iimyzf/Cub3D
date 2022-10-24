@@ -79,8 +79,8 @@ void	draw_wall(t_img *img, int index, t_ray ray, t_texture text)
 	}
 	while (start <= end)
 	{
-		//if (ray.color_index >= 0 && ray.color_index <= text.img.x && (start - wall_start) <= img->y)
-			color = text.colors[ray.color_index][((start - wall_start) * text.img.y) / ray.wall_hight];
+		
+		color = text.colors[ray.color_index][((start - wall_start) * text.img.y) / ray.wall_hight];
 		my_pixel_put(img, index, start, color);
 		start++;
 	}
