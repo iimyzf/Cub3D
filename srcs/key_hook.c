@@ -43,12 +43,10 @@ int	key_hook(int keycode, t_data *data)
 			data->player.y -= data->player.dy * SPEED;
 		}
 	}
-	// if (keycode == 2)
-	// {
-	// 	data->player.x += 1;
-	// }
-	// if (keycode == 0)
-	// 	data->player.x -= 1;
+	if (keycode == 2)
+		can_move_side(&data->player, data->main_map, 0);
+	if (keycode == 0)
+		can_move_side(&data->player, data->main_map, 1);
 	if (keycode == 53)
 		exit (1);
 	rendering(data);

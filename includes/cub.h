@@ -156,6 +156,7 @@ typedef	struct s_data
 int		check_file(char *path);
 char	**my_split(char const *s, char c);
 int		get_colors(t_textures text, int x,int y);
+int		can_move_side(t_player *player, t_map map,int	to_right);
 int		check_for_player(char c, int *count);
 char	*get_str(char *str);
 char	*get_next_line(int fd);

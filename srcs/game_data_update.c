@@ -32,6 +32,28 @@ void	add_collision_trans(t_player *player, char **map, int fact)
 			player->y += player->dy * COL_SPEED * fact;
 }
 
+int	can_move_side(t_player *player, t_map map,int	to_right)
+{
+	float	x;
+	float	y;
+	float	dx;
+	float	dy;
+	float ang;
+
+	ang = player->ang.value + 90;
+	if (to_right)
+		ang = player->ang.value - 90;
+	x = player->x + cos(ang * RAD) * SPEED;
+	y = player->y + sin(ang * RAD) * SPEED;
+	if (!(!player->can_move_b && !player->can_move_f) && map.map[(int)y / UNIT][(int)x / UNIT] != '1')
+	{
+		player->x = x;
+		player->y = y;
+		return (1);
+	}
+	return (0);
+}
+
 void	ang_update(t_ang *ang, float value)
 {
 	ang->value = value;
@@ -62,15 +84,15 @@ int	check_sides(t_player *player, float *ang, char **map, int direct)
 	int		i;
 
 	i = 0;
-	x = (player->x + (cos((*ang + 45) * RAD) * 20 - player->ang.x_ofs) * direct) / UNIT;
-	y = (player->y + (sin((*ang + 45) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
+	x = (player->x + (cos((*ang + 10) * RAD) * 20 - player->ang.x_ofs) * direct) / UNIT;
+	y = (player->y + (sin((*ang + 10) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
 	if (map[y][x] == '1')
 		i++;
-	x = (player->x + (cos((*ang - 45) * RAD) * 20 - player->ang.x_ofs) * direct) / UNIT;
-	y = (player->y + (sin((*ang - 45) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
+	x = (player->x + (cos((*ang - 10) * RAD) * 20 - player->ang.x_ofs) * direct) / UNIT;
+	y = (player->y + (sin((*ang - 10) * RAD) * 20 - player->ang.y_ofs) * direct) / UNIT;
 	if (map[y][x] == '1')
 		i++;
-	if (i == 2)
+	if (i >= 1)
 		return (1);
 	return (0);
 }

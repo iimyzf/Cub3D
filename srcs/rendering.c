@@ -95,7 +95,7 @@ void	player_render(t_img *img, t_player player, t_map map, t_ray *rays)
 	while (i < WIN_WIDTH)
 	{
 		draw_ray(img, rays[i], 0x3333FF);
-		i += 50;
+		i += 1;
 	}
 }
 
