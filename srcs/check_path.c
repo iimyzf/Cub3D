@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:29:15 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/23 18:27:32 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/23 21:14:06 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,15 +154,20 @@ void	which_str(char *str, t_data *data)
 void	get_element(char **map, t_data *data)
 {
 	int		i;
+	int		j;
 	char	*str;
 
 	i = 0;
-	while (map[i] && i < 6)
+	j = 0;
+	while (map[i] && j < 6)
 	{
-		str = ft_strtrim(map[i], " ");
-		str = ft_strtrim(map[i], "\n");
-		//fprintf(stderr, "str = %s\n", str);
-		which_str(str, data);
+		if (map[i][0] != '\n')
+		{
+			j++;
+			str = ft_strtrim(map[i], " ");
+			str = ft_strtrim(map[i], "\n");
+			which_str(str, data);
+		}
 		i++;
 	}
 }
