@@ -51,14 +51,13 @@ TO DO:
 
 norm the code
 optimize RAM
-handle multiple keys press
-Add side moves
 Remove forbiden funcs
 
 DOING:
 set walls oriantations
  
 DONE:
+Add side moves
 fix player collisions
 optimize CPU using
 merge map parcing
