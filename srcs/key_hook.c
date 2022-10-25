@@ -12,6 +12,32 @@
 
 #include "../includes/cub.h"
 
+void	letf_move(t_data *data)
+{
+	if (!data->player.can_move_f)
+		add_collision_trans(&data->player, data->main_map.map, 1);
+	else
+	{
+		data->player.x_slid = 0;
+		data->player.y_slid = 0;
+		data->player.x += data->player.dx * SPEED;
+		data->player.y += data->player.dy * SPEED;
+	}
+}
+
+void	right_move(t_data *data)
+{
+	if (!data->player.can_move_b)
+		add_collision_trans(&data->player, data->main_map.map, -1);
+	else
+	{
+		data->player.x_slid = 0;
+		data->player.y_slid = 0;
+		data->player.x -= data->player.dx * SPEED;
+		data->player.y -= data->player.dy * SPEED;
+	}
+}
+
 int	key_hook(int keycode, t_data *data)
 {
 	char	**map;
@@ -23,29 +49,9 @@ int	key_hook(int keycode, t_data *data)
 		data->player.ang.value += RO_SPEED;
 	player_update(&data->player, &data->player.ang.value, data->main_map.map);
 	if ((keycode == 126 || keycode == 13))
-	{
-		if (!data->player.can_move_f)
-			add_collision_trans(&data->player, data->main_map.map, 1);
-		else
-		{
-			data->player.x_slid = 0;
-			data->player.y_slid = 0;
-			data->player.x += data->player.dx * SPEED;
-			data->player.y += data->player.dy * SPEED;
-		}
-	}
+		letf_move(data);
 	if ((keycode == 125 || keycode == 1))
-	{
-		if (!data->player.can_move_b)
-			add_collision_trans(&data->player, data->main_map.map, -1);
-		else
-		{
-			data->player.x_slid = 0;
-			data->player.y_slid = 0;
-			data->player.x -= data->player.dx * SPEED;
-			data->player.y -= data->player.dy * SPEED;
-		}
-	}
+		right_move(data);
 	if (keycode == 2)
 		can_move_side(&data->player, data->main_map, 0);
 	if (keycode == 0)
@@ -53,6 +59,5 @@ int	key_hook(int keycode, t_data *data)
 	if (keycode == 53)
 		exit (1);
 	data->ch = 1;
-	//rendering(data);
 	return (0);
 }

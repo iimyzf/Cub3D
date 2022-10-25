@@ -32,32 +32,34 @@ void	ray_add_wall_data(t_ray *ray, t_map map)
 	ray->dx = ray->dx / ray->step;
 	ray->dy = ray->dy / ray->step;
 	if (ray->is_vert)
-		ray->color_index = ((int)(ray->end.y) % UNIT) * (map.text.no.img.x / UNIT);
+		ray->color_index = ((int)(ray->end.y) % UNIT)
+			* (map.text.no.img.x / UNIT);
 	else
-		ray->color_index = ((int)(ray->end.x) % UNIT) * (map.text.no.img.x / UNIT);
+		ray->color_index = ((int)(ray->end.x) % UNIT)
+			* (map.text.no.img.x / UNIT);
 }
 
 void	ray_casting(t_ray *ray, t_map map)
 {
-	float x_ofs;
-	float y_ofs;
+	float	x_ofs;
+	float	y_ofs;
 
 	x_ofs = ray->ang.x_ofs;
 	y_ofs = ray->ang.y_ofs;
-	while (is_in_map(map, ray->end.x, ray->end.y) &&
-			!is_a_wall(map, ray->end.x - x_ofs, ray->end.y - y_ofs))
+	while (is_in_map(map, ray->end.x, ray->end.y)
+		&& !is_a_wall(map, ray->end.x - x_ofs, ray->end.y - y_ofs))
 	{
 		ray->end.x += ray->x_step;
 		ray->end.y += ray->y_step;
 	}
-	ray->len = sqrt((ray->start.x - ray->end.x) * (ray->start.x - ray->end.x) +
-					(ray->start.y - ray->end.y) * (ray->start.y - ray->end.y));
+	ray->len = sqrt((ray->start.x - ray->end.x) * (ray->start.x - ray->end.x)
+			+ (ray->start.y - ray->end.y) * (ray->start.y - ray->end.y));
 }
 
 t_ray	vert_ray_init(t_player *player, float ang, t_map map)
 {
-	t_ray v_ray;
-	
+	t_ray	v_ray;
+
 	ray_init(player, &v_ray, ang);
 	v_ray.is_vert = 1;
 	v_ray.wall_color = 0x3333FF;
@@ -82,7 +84,7 @@ t_ray	vert_ray_init(t_player *player, float ang, t_map map)
 
 t_ray	hor_ray_init(t_player *player, float ang, t_map map)
 {
-	t_ray h_ray;
+	t_ray	h_ray;
 
 	ray_init(player, &h_ray, ang);
 	h_ray.is_vert = 0;
@@ -107,4 +109,3 @@ t_ray	hor_ray_init(t_player *player, float ang, t_map map)
 	ray_casting(&h_ray, map);
 	return (h_ray);
 }
-

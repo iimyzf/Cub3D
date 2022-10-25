@@ -121,6 +121,8 @@ typedef struct s_ray
 	int			wall_color;
 	//int			*tex;
 	int			color_index;
+	int			wall_start;
+	int			wall_end;
 	int			is_vert;
 	float		x_step;
 	float		y_step;
@@ -170,7 +172,7 @@ void	check_for_end(char **map, int i, int j);
 void	check_for_space(char **map, int i, int j);
 void	check_udrl(char **map, int i, int j, int len);
 void	check_for_newline(char *str);
-int		scean_init(t_data	*data);
+void	scean_init(t_data	*data);
 t_ray	*rays_render(t_img *img, t_player player, t_map map);
 t_img	img_init(t_data *data);
 void	ray_init(t_player *player, t_ray *ray, float ang);

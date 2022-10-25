@@ -12,7 +12,6 @@
 
 #include "../includes/cub.h"
 
-
 void	map_render(t_img *img, char	**map)
 {
 	int	x;
@@ -24,7 +23,7 @@ void	map_render(t_img *img, char	**map)
 		y = 0;
 		while (map[x][y])
 		{
-			if(map[x][y] == '1')
+			if (map[x][y] == '1')
 				bloc_draw(img, y * MINI_UNIT, x * MINI_UNIT, 0X999900);
 			else
 				bloc_draw(img, y * MINI_UNIT, x * MINI_UNIT, 0xFF000000);
@@ -72,26 +71,17 @@ t_ray	*rays_render(t_img *img, t_player player, t_map map)
 		ray_ang += s;
 	}
 	return (rays);
-	//fprintf(stderr, "s = %f\r", s);
 }
 
 void	player_render(t_img *img, t_player player, t_ray *rays)
 {
 	int		i;
 	float	x;
-	float 	y;
+	float	y;
 
 	x = player.x;
 	y = player.y;
-
 	i = 0;
-	// while (i++ < 10)
-	// {
-	// 	x += player.dx;
-	// 	y += player.dy;
-	// 	my_pixel_put(img, (int)(x * SCAL), (int)(y * SCAL), 0XFFFFFF);
-	// }
-	// i = 0;
 	while (i < WIN_WIDTH)
 	{
 		draw_ray(img, rays[i], 0x3333FF);
@@ -102,25 +92,17 @@ void	player_render(t_img *img, t_player player, t_ray *rays)
 int	rendering(t_data *data)
 {
 	t_img	img;
-	t_img	img2;
 	t_ray	*rays;
-	if(data->ch)
+
+	if (data->ch)
 	{
 		mlx_clear_window(data->mlx, data->win.ptr);
 		img = img_init(data);
-		img2.ptr =  mlx_new_image(data->mlx, data->main_map.x_len * MINI_UNIT , data->main_map.y_len * MINI_UNIT);
-		img2.addr = mlx_get_data_addr(img2.ptr, &img2.bit_per_pixel, &img2.line_length,
-					&img2.endian);
 		rays = rays_render(&img, data->player, data->main_map);
-		//map_render(&img2, data->main_map.map);
-		//player_render(&img2, data->player, rays);
 		free(rays);
 		mlx_put_image_to_window(data->mlx, data->win.ptr, img.ptr, 0, 0);
-		//mlx_put_image_to_window(data->mlx, data->win.ptr, img2.ptr, 0, 0);
-		mlx_destroy_image(data->mlx , img.ptr);
-		mlx_destroy_image(data->mlx , img2.ptr);
+		mlx_destroy_image(data->mlx, img.ptr);
 	}
 	data->ch = 0;
-
 	return (0);
 }
