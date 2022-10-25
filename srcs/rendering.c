@@ -75,7 +75,7 @@ t_ray	*rays_render(t_img *img, t_player player, t_map map)
 	//fprintf(stderr, "s = %f\r", s);
 }
 
-void	player_render(t_img *img, t_player player, t_map map, t_ray *rays)
+void	player_render(t_img *img, t_player player, t_ray *rays)
 {
 	int		i;
 	float	x;
@@ -95,7 +95,7 @@ void	player_render(t_img *img, t_player player, t_map map, t_ray *rays)
 	while (i < WIN_WIDTH)
 	{
 		draw_ray(img, rays[i], 0x3333FF);
-		i += 1;
+		i += 50;
 	}
 }
 
@@ -104,20 +104,23 @@ int	rendering(t_data *data)
 	t_img	img;
 	t_img	img2;
 	t_ray	*rays;
-	
-	mlx_clear_window(data->mlx, data->win.ptr);
-	img = *img_init(data);
-	img2.ptr =  mlx_new_image(data->mlx, data->main_map.x_len * MINI_UNIT , data->main_map.y_len * MINI_UNIT);
-	img2.addr = mlx_get_data_addr(img2.ptr, &img2.bit_per_pixel, &img2.line_length,
-				&img2.endian);
-	rays = rays_render(&img, data->player, data->main_map);
-	map_render(&img2, data->main_map.map);
-	player_render(&img2, data->player, data->main_map, rays);
-	free(rays);
-	mlx_put_image_to_window(data->mlx, data->win.ptr, img.ptr, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win.ptr, img2.ptr, 0, 0);
-	mlx_destroy_image(data->mlx , img.ptr);
-	mlx_destroy_image(data->mlx , img2.ptr);
+	if(data->ch)
+	{
+		mlx_clear_window(data->mlx, data->win.ptr);
+		img = img_init(data);
+		img2.ptr =  mlx_new_image(data->mlx, data->main_map.x_len * MINI_UNIT , data->main_map.y_len * MINI_UNIT);
+		img2.addr = mlx_get_data_addr(img2.ptr, &img2.bit_per_pixel, &img2.line_length,
+					&img2.endian);
+		rays = rays_render(&img, data->player, data->main_map);
+		//map_render(&img2, data->main_map.map);
+		//player_render(&img2, data->player, rays);
+		free(rays);
+		mlx_put_image_to_window(data->mlx, data->win.ptr, img.ptr, 0, 0);
+		//mlx_put_image_to_window(data->mlx, data->win.ptr, img2.ptr, 0, 0);
+		mlx_destroy_image(data->mlx , img.ptr);
+		mlx_destroy_image(data->mlx , img2.ptr);
+	}
+	data->ch = 0;
 
 	return (0);
 }

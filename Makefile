@@ -29,8 +29,8 @@ CYAN		=	"\033[1;36m"
 # =============================================================================
 
 
-CC			=	gcc -fsanitize=address -g3
-CFLAGS		=	#-Wall -Werror -Wextra
+CC			=	gcc #-fsanitize=address -g3
+CFLAGS		=	-Wall -Werror -Wextra
 MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
 

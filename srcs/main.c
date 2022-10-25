@@ -37,10 +37,10 @@ int	main(int ac, char **av)
 	data.main_map.y_len = i;
 	data.win.ptr = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HIGHT, "Cub3D");
 	scean_init(&data);
-	//mlx_loop_hook(data.mlx, rendering, &data);
-	rendering(&data);
-	//write (2, "here\n", 5);
 	mlx_hook(data.win.ptr, 02, 1L<<9, key_hook, &data);
+	mlx_loop_hook(data.mlx, rendering, &data);
+	//rendering(&data);
+	//write (2, "here\n", 5);
 	mlx_loop(data.mlx);
 }
 

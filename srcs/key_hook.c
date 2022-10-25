@@ -15,20 +15,21 @@
 int	key_hook(int keycode, t_data *data)
 {
 	char	**map;
-	
+
 	map = data->main_map.map;
 	if (keycode == 123)
 		data->player.ang.value -= RO_SPEED;
 	if (keycode == 124)
 		data->player.ang.value += RO_SPEED;
 	player_update(&data->player, &data->player.ang.value, data->main_map.map);
-	//fprintf(stderr, "key = %d\n", keycode);
 	if ((keycode == 126 || keycode == 13))
 	{
 		if (!data->player.can_move_f)
 			add_collision_trans(&data->player, data->main_map.map, 1);
 		else
 		{
+			data->player.x_slid = 0;
+			data->player.y_slid = 0;
 			data->player.x += data->player.dx * SPEED;
 			data->player.y += data->player.dy * SPEED;
 		}
@@ -39,6 +40,8 @@ int	key_hook(int keycode, t_data *data)
 			add_collision_trans(&data->player, data->main_map.map, -1);
 		else
 		{
+			data->player.x_slid = 0;
+			data->player.y_slid = 0;
 			data->player.x -= data->player.dx * SPEED;
 			data->player.y -= data->player.dy * SPEED;
 		}
@@ -49,6 +52,7 @@ int	key_hook(int keycode, t_data *data)
 		can_move_side(&data->player, data->main_map, 1);
 	if (keycode == 53)
 		exit (1);
-	rendering(data);
+	data->ch = 1;
+	//rendering(data);
 	return (0);
 }

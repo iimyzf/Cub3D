@@ -72,6 +72,8 @@ typedef struct s_player
 	float		dx;
 	float		dy;
 	char		type;
+	int			x_slid;
+	int			y_slid;
 	t_ang		ang;
 }	t_player;
 
@@ -150,6 +152,7 @@ typedef	struct s_data
 	t_textures	text;
 	int			fd;
 	t_color		color;
+	int			ch;
 	t_player	player;
 }	t_data;
 
@@ -169,7 +172,7 @@ void	check_udrl(char **map, int i, int j, int len);
 void	check_for_newline(char *str);
 int		scean_init(t_data	*data);
 t_ray	*rays_render(t_img *img, t_player player, t_map map);
-t_img	*img_init(t_data *data);
+t_img	img_init(t_data *data);
 void	ray_init(t_player *player, t_ray *ray, float ang);
 t_ray	vert_ray_init(t_player *player, float ang, t_map map);
 int		key_hook(int keycode, t_data *data);

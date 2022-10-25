@@ -64,7 +64,6 @@ void	draw_wall(t_img *img, int index, t_ray ray, t_texture text)
 	int	wall_start;
 	float	end;
 	int		color;
-	float	y;
 
 	start = 0;
 	color =  0x3333FF;
