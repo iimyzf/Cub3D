@@ -12,6 +12,13 @@
 
 #include "../includes/cub.h"
 
+int	ft_exit(t_data *data)
+{
+	(void) data;
+	exit(1);
+	return (1);
+}
+
 void	letf_move(t_data *data)
 {
 	if (!data->player.can_move_f)
@@ -57,7 +64,7 @@ int	key_hook(int keycode, t_data *data)
 	if (keycode == 0)
 		can_move_side(&data->player, data->main_map, 1);
 	if (keycode == 53)
-		exit (1);
+		ft_exit (data);
 	data->ch = 1;
 	return (0);
 }

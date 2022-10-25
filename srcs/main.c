@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 	data.win.ptr = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HIGHT, "Cub3D");
 	scean_init(&data);
 	mlx_hook(data.win.ptr, 02, 0, key_hook, &data);
+	mlx_hook(data.win.ptr, 17, 0, ft_exit, &data);
 	mlx_loop_hook(data.mlx, rendering, &data);
 	mlx_loop(data.mlx);
 }
