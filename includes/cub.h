@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azabir <azabir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:30:01 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/22 23:33:48 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/28 19:30:46 by azabir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
-#define CUB_H
+# define CUB_H
 
 # include <math.h>
 # include "mlx.h"
@@ -27,12 +27,9 @@
 # define COL_SPEED 5
 # define UNIT 50
 # define SCAL 0.2
-# define MINI_UNIT (UNIT * SCAL)
-# define RAD M_PI / 180
 # define WIN_HIGHT 720
 # define WIN_WIDTH 1280
 # define FOV 60.0000
-# define RAY_OFS (FOV / WIN_WIDTH)
 
 typedef struct s_cords
 {
@@ -40,7 +37,7 @@ typedef struct s_cords
 	float	y;
 }	t_cords;
 
-typedef	struct s_ang
+typedef struct s_ang
 {
 	float	value;
 	int		to_right;
@@ -49,11 +46,10 @@ typedef	struct s_ang
 	int		y_ofs;
 }	t_ang;
 
-
-typedef	struct s_img
+typedef struct s_img
 {
 	int		x;
-	int 	y;
+	int		y;
 	char	*addr;
 	int		bit_per_pixel;
 	void	*ptr;
@@ -92,7 +88,6 @@ typedef struct s_texture
 	t_img			img;
 	int				**colors;
 	t_color			the_color;
-	
 }	t_texture;
 
 typedef struct s_textures
@@ -119,7 +114,6 @@ typedef struct s_ray
 	float		ang_addj;
 	float		step;
 	int			wall_color;
-	//int			*tex;
 	int			color_index;
 	int			wall_start;
 	int			wall_end;
@@ -129,7 +123,7 @@ typedef struct s_ray
 	int			wall_hight;
 }	t_ray;
 
-typedef	struct s_map
+typedef struct s_map
 {
 	char		**map;
 	t_textures	text;
@@ -138,14 +132,14 @@ typedef	struct s_map
 	t_player	player;
 }	t_map;
 
-typedef	struct s_window
+typedef struct s_window
 {
 	int		high;
 	int		width;
 	void	*ptr;
 }	t_window;
 
-typedef	struct s_data
+typedef struct s_data
 {
 	t_map		main_map;
 	void		*mlx;
@@ -161,8 +155,8 @@ typedef	struct s_data
 int		check_file(char *path);
 int		ft_exit(t_data *data);
 char	**my_split(char const *s, char c);
-int		get_colors(t_textures text, int x,int y);
-int		can_move_side(t_player *player, t_map map,int	to_right);
+int		get_colors(t_textures text, int x, int y);
+int		can_move_side(t_player *player, t_map map, int to_right);
 int		check_for_player(char c, int *count);
 char	*get_str(char *str);
 char	*get_next_line(int fd);
@@ -179,8 +173,6 @@ t_img	img_init(t_data *data);
 void	ray_init(t_player *player, t_ray *ray, float ang);
 t_ray	vert_ray_init(t_player *player, float ang, t_map map);
 int		key_hook(int keycode, t_data *data);
-//void	map_check(t_data *data);
-void	dda_algo(t_img *img, float x0, float y0, float x1, float y1, int color);
 int		rendering(t_data *data);
 void	add_collision_trans(t_player *player, char **map, int fact);
 void	ang_update(t_ang *ang, float value);
@@ -188,15 +180,16 @@ void	my_pixel_put(t_img *img, int x, int y, int color);
 void	player_update(t_player *player, float *ang, char **map);
 void	map_render(t_img *img, char	**map);
 void	bloc_draw(t_img *img, int x, int y, int color);
-int		is_a_wall(t_map main_map,float x, float y);
+int		is_a_wall(t_map main_map, float x, float y);
 void	draw_ray(t_img *img, t_ray ray, int color);
 void	ray_casting(t_ray *ray, t_map map);
 void	ray_add_wall_data(t_ray *ray, t_map map);
 void	draw_wall(t_img *img, int index, t_ray ray, t_texture text);
 int		is_in_win(float x, float y);
-int		is_in_map(t_map map,float x, float y);
+int		is_in_map(t_map map, float x, float y);
 int		ft_strlen(char *str);
-void	*mlx_png_file_to_image(void *mlx_ptr, char *filename, int *width, int *height);
+void	*mlx_png_file_to_image(void *mlx_ptr, char *filename,
+			int *width, int *height);
 t_ray	hor_ray_init(t_player *player, float ang, t_map map);
 void	map_checking(char **map, t_data *data);
 char	**get_the_map(char **map);
