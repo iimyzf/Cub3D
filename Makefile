@@ -6,7 +6,7 @@
 #    By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/25 00:12:37 by yagnaou           #+#    #+#              #
-#    Updated: 2022/10/28 01:29:00 by yagnaou          ###   ########.fr        #
+#    Updated: 2022/10/28 23:04:41 by yagnaou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,8 @@ CYAN		=	"\033[1;36m"
 # =============================================================================
 
 
-CC			=	gcc #-fsanitize=address -g3
+CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
-MLXFLAGS	=	#-lmlx -framework OpenGL -framework AppKit
 
 
 # =============================================================================
@@ -85,7 +84,7 @@ all			:	$(NAME)
 
 $(NAME)		:	$(SRCS)
 				@make -C minilibx
-				mv minilibx/libmlx.dylib .
+				@mv minilibx/libmlx.dylib .
 				@echo "---> Compiling...$${HEADER}"
 				@${CC} $(CFLAGS) ${MLXFLAGS} $(SRCS) libmlx.dylib -o $(NAME)
 				@echo "---> Compilation done."
@@ -101,6 +100,7 @@ clean		:
 fclean		:
 				@rm -f  $(OBJS)
 				@rm -f  $(NAME)
+				@rm -rf libmlx.dylib
 				@echo "---> Cleaning ${NAME} with it's object files..."
 				@echo "---> All cleaned!"
 

@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:30:01 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/28 01:21:24 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/28 23:00:48 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@
 # define COL_SPEED 5
 # define UNIT 50
 # define SCAL 0.2
-# define MINI_UNIT (UNIT * SCAL)
-# define RAD M_PI / 180
 # define WIN_HIGHT 720
 # define WIN_WIDTH 1280
 # define FOV 60.0000
-# define RAY_OFS (FOV / WIN_WIDTH)
 
 typedef struct s_norm
 {

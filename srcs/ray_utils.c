@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azabir <azabir@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:39:11 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/07 18:19:43 by azabir           ###   ########.fr       */
+/*   Updated: 2022/10/28 23:02:15 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ray_init(t_player *player, t_ray *ray, float ang)
 	ray->start.x = player->x;
 	ray->start.y = player->y;
 	ang_update(&ray->ang, player->ang.value + ang);
-	ray->ang_tg = tan(ray->ang.value * RAD);
-	ray->ang_addj = cos((ray->ang.value - player->ang.value) * RAD);
+	ray->ang_tg = tan(ray->ang.value * (M_PI / 180));
+	ray->ang_addj = cos((ray->ang.value - player->ang.value) * (M_PI / 180));
 }
 
 void	ray_add_wall_data(t_ray *ray, t_map map)

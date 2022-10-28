@@ -6,32 +6,11 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 14:56:49 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/28 01:10:19 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/28 23:02:33 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-void	map_render(t_img *img, char	**map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (map[x])
-	{
-		y = 0;
-		while (map[x][y])
-		{
-			if (map[x][y] == '1')
-				bloc_draw(img, y * MINI_UNIT, x * MINI_UNIT, 0X999900);
-			else
-				bloc_draw(img, y * MINI_UNIT, x * MINI_UNIT, 0xFF000000);
-			y++;
-		}
-		x++;
-	}
-}
 
 t_ray	short_ray_cast(t_player player, t_map map, float ray_ang)
 {

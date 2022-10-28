@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 18:26:52 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/22 23:35:33 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/28 23:01:52 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,6 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 		pixel = img->addr + (y * img->line_length + x
 				* (img->bit_per_pixel / 8));
 		*(int *)pixel = color;
-	}
-}
-
-void	bloc_draw(t_img *img, int x, int y, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < (MINI_UNIT))
-	{
-		j = 0;
-		while (j < (MINI_UNIT))
-		{
-			my_pixel_put(img, x + j, y + i, color);
-			j++;
-		}
-		i++;
 	}
 }
 
