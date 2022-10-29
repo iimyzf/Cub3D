@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+         #
+#    By: azabir <azabir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/25 00:12:37 by yagnaou           #+#    #+#              #
-#    Updated: 2022/10/29 18:06:38 by yagnaou          ###   ########.fr        #
+#    Updated: 2022/10/29 20:18:22 by azabir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,10 +41,10 @@ MLX_FLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
 NAME		=	cub3D
 BNAME		=	cub3D_bonus
-MAN_LIBFT	=	mandatory/libft/
-BNS_LIBFT	=	bonus/libft/
-SRC			=	mandatory/srcs/
-BSRC		=	bonus/srcs/
+MAN_LIBFT	=	libft/
+BNS_LIBFT	=	libft/
+SRC			=	srcs/
+BSRC		=	srcs/
 
 SRCS		=	${MAN_LIBFT}/ft_atoi.c			\
 				${MAN_LIBFT}/free_array.c		\

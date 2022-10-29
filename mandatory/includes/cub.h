@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azabir <azabir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:30:01 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/29 18:00:10 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/29 20:22:04 by azabir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define CUB_H
 
 # include <math.h>
-# include "../../minilibx/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <mlx.h>
 # include "../libft/libft.h"
 
 # define INIT_ANG 0.1
