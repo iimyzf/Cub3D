@@ -68,18 +68,3 @@ int	key_hook(int keycode, t_data *data)
 	data->ch = 1;
 	return (0);
 }
-
-// int	mouse_hook(int x, int y, t_data *data)
-// {
-// 	(void) x;
-// 	(void) y;
-// 	if (hook(data) == 2)
-// 		data->player.ang.value -= RO_SPEED / 2;
-// 	if (hook(data) == 1)
-// 		data->player.ang.value += RO_SPEED / 2;
-// 	player_update(&data->player, &data->player.ang.value, data->main_map.map);
-// 	mlx_mouse_move(data->win.ptr, WIN_WIDTH / 2, 100);
-// 	mlx_mouse_hide();
-// 	data->ch = 1;
-// 	return (0);
-// }
