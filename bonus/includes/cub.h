@@ -6,7 +6,7 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:30:01 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/28 23:00:48 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/28 23:30:09 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB_H
 
 # include <math.h>
-# include "../minilibx/mlx.h"
+# include "../../minilibx/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
