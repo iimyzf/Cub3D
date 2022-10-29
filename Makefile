@@ -6,7 +6,7 @@
 #    By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/25 00:12:37 by yagnaou           #+#    #+#              #
-#    Updated: 2022/10/23 18:03:32 by yagnaou          ###   ########.fr        #
+#    Updated: 2022/10/28 23:04:41 by yagnaou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,8 @@ CYAN		=	"\033[1;36m"
 # =============================================================================
 
 
-CC			=	gcc #-fsanitize=address -g3
+CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
-MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
 
 # =============================================================================
@@ -45,6 +44,7 @@ LIBFT		=	libft/
 SRC			=	srcs/
 
 SRCS		=	${LIBFT}/ft_atoi.c				\
+				${LIBFT}/free_array.c			\
 				${LIBFT}/ft_bzero.c				\
 				${LIBFT}/ft_calloc.c			\
 				${LIBFT}/ft_isalnum.c			\
@@ -58,9 +58,12 @@ SRCS		=	${LIBFT}/ft_atoi.c				\
 				${LIBFT}/ft_substr.c			\
 				${SRC}/main.c					\
 				${SRC}/check_file.c				\
-				${SRC}/check_map.c				\
 				${SRC}/check_for.c				\
+				${SRC}/check_map_utils.c		\
+				${SRC}/check_map.c				\
+				${SRC}/check_path_utils.c		\
 				${SRC}/check_path.c				\
+				${SRC}/fill_and_get_colors.c	\
 				${SRC}/game_cords_check.c		\
 				${SRC}/game_data_init.c			\
 				${SRC}/game_data_update.c		\
@@ -80,12 +83,14 @@ OBJS = $(SRCS:.c=.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(SRCS)
-				@echo "---> Compiling \n$${HEADER}"
-				@${CC} $(CFLAGS) ${MLXFLAGS} $(SRCS) -o $(NAME)
+				@make -C minilibx
+				@mv minilibx/libmlx.dylib .
+				@echo "---> Compiling...$${HEADER}"
+				@${CC} $(CFLAGS) ${MLXFLAGS} $(SRCS) libmlx.dylib -o $(NAME)
 				@echo "---> Compilation done."
 
-%.o : %.c
-	@${CC} $(CFLAGS) -c $< -o $@ 
+%.o			:	%.c
+				@${CC} $(CFLAGS) -c $< -o $@ 
 
 clean		:
 				@rm -f $(OBJS)
@@ -95,6 +100,7 @@ clean		:
 fclean		:
 				@rm -f  $(OBJS)
 				@rm -f  $(NAME)
+				@rm -rf libmlx.dylib
 				@echo "---> Cleaning ${NAME} with it's object files..."
 				@echo "---> All cleaned!"
 

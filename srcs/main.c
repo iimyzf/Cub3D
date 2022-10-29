@@ -6,11 +6,25 @@
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:30:39 by azabir            #+#    #+#             */
-/*   Updated: 2022/10/23 00:04:07 by yagnaou          ###   ########.fr       */
+/*   Updated: 2022/10/28 01:09:03 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int	hook(t_data *data)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	mlx_mouse_get_pos(data->win.ptr, &x, &y);
+	if (x > WIN_WIDTH / 2)
+		return (1);
+	if (x < WIN_WIDTH / 2)
+		return (2);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -29,6 +43,7 @@ int	main(int ac, char **av)
 	data.win.ptr = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HIGHT, "Cub3D");
 	scean_init(&data);
 	mlx_hook(data.win.ptr, 02, 0, key_hook, &data);
+	mlx_hook(data.win.ptr, 06, 0, mouse_hook, &data);
 	mlx_hook(data.win.ptr, 17, 0, ft_exit, &data);
 	mlx_loop_hook(data.mlx, rendering, &data);
 	mlx_loop(data.mlx);

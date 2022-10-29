@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   free_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 10:56:54 by yagnaou           #+#    #+#             */
-/*   Updated: 2022/10/27 01:21:52 by yagnaou          ###   ########.fr       */
+/*   Created: 2022/10/26 22:35:31 by yagnaou           #+#    #+#             */
+/*   Updated: 2022/10/26 22:36:08 by yagnaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub.h"
 
-void	ft_bzero(void *s, size_t n)
+void	free_array(char **arr)
 {
-	size_t	i;
-	char	*k;
+	int		i;
 
 	i = 0;
-	k = s;
-	while (i < n)
+	while (arr[i])
 	{
-		k[i] = 0;
+		free(arr[i]);
 		i++;
 	}
+	free(arr);
 }
