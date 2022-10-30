@@ -1,9 +1,9 @@
-NO assets/texture/no.xpm
-EA assets/texture/ea.xpm
-WE assets/texture/we.xpm
-SO assets/texture/so.xpm
+NO assets/texture/BRICK_3D.xpm
+EA assets/texture/BRICK_3D.xpm
+WE assets/texture/BRICK_3D.xpm
+SO assets/texture/BRICK_3D.xpm
 
-F 69,191,85                           
+F 8,159,84
 C 131,227,218
 
         1111111111111111111111111
