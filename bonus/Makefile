@@ -6,7 +6,7 @@
 #    By: azabir <azabir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/25 00:12:37 by yagnaou           #+#    #+#              #
-#    Updated: 2022/10/31 21:03:08 by azabir           ###   ########.fr        #
+#    Updated: 2022/10/31 21:08:42 by azabir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,4 +107,4 @@ fclean		:
 
 re			:	fclean all
 
-.PHONY: clean bonus fclean
+.PHONY: clean bonus fclean re all
