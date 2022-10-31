@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+         #
+#    By: azabir <azabir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/25 00:12:37 by yagnaou           #+#    #+#              #
-#    Updated: 2022/10/29 22:06:51 by yagnaou          ###   ########.fr        #
+#    Updated: 2022/10/31 21:03:08 by azabir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,8 @@ OBJS		=	${SRCS:.c=.o}
 
 all			:	${NAME}
 
+bonus		:	${NAME}
+
 ${NAME}		:	${SRCS}
 				@make -C minilibx
 				@mv minilibx/libmlx.dylib .
@@ -104,3 +106,5 @@ fclean		:
 				@echo "---> All cleaned!"
 
 re			:	fclean all
+
+.PHONY: clean bonus fclean

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yagnaou <yagnaou@student.42.fr>            +#+  +:+       +#+         #
+#    By: azabir <azabir@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/25 00:12:37 by yagnaou           #+#    #+#              #
-#    Updated: 2022/10/29 22:08:27 by yagnaou          ###   ########.fr        #
+#    Updated: 2022/10/31 21:03:39 by azabir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ OBJS		=	${SRCS:.c=.o}
 
 all			:	${NAME}
 
-${NAME}		:	${SRCS}
+${NAME}		:	${OBJS}
 				@echo "---> Compiling Mandatory..."
 				@${CC} ${CFLAGS} ${MLX_FLAGS} ${SRCS} -o ${NAME}
 				@echo "---> Compilation done."
@@ -102,3 +102,5 @@ fclean		:
 				@echo "---> All cleaned!"
 
 re			:	fclean all
+
+.PHONY: clean bonus fclean
